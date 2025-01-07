@@ -1,0 +1,130 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definindo variáveis de cor */
+:root {
+    --color-white: #FDFDFD;
+    --color-hover: rgba(0, 72, 35, 0.50);
+    --color-text: #FFF;
+}
+
+/* Configuração principal da navegação */
+.nav {
+    position: relative; /* Permite o uso de elementos posicionados internamente */
+    height: 400px; /* Altura da área de destaque */
+    overflow: hidden; /* Evita que elementos extrapolem */
+}
+
+/* Fundo da navegação com rotação de 45 graus */
+.background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg); /* Rotaciona o fundo em 45 graus */
+    transform-origin: top left; /* Define o ponto de origem da rotação no topo esquerdo */
+    z-index: -1; /* Garante que o fundo fique atrás do vetor */
+}
+
+/* Estilizando a imagem de fundo */
+.background-img {
+    width: 15000%; /* Estica para cobrir todo o header */
+    height: 400%; /* Estica para cobrir todo o header */
+    object-fit: cover; /* Faz com que a imagem cubra sem distorcer */
+    position: absolute;
+    top: -250%; /* Ajusta a posição para garantir cobertura completa */
+    left: -250%; /* Ajusta a posição para garantir cobertura completa */
+    background-position: right center; /* Alinha a parte mais escura à direita */
+}
+
+/* Decorativo vetor */
+.decorative-vector {
+    position: absolute;
+    top: -186%; /* Ajuste a posição vertical conforme necessário */
+    right: 0%; /* Move o vetor para a direita */
+    transform: translate(50%, -50%); /* Manter o alinhamento centralizado, mas agora deslocado para a direita */
+    width: 77%; /* Tamanho do vetor ajustável */
+    z-index: 0; /* Garante que o vetor fique atrás do conteúdo, mas na frente do fundo */
+    transform: rotate(-45deg); /* Rotaciona o fundo em 45 graus */
+}
+
+/* Conteúdo principal */
+.content {
+    position: relative;
+    z-index: 3; /* Coloca o conteúdo acima do vetor */
+    text-align: center;
+    color: var(--color-white);
+    padding: 50px 20px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    margin-bottom: 20px;
+    z-index: 3; /* Garante que a navbar fique acima do fundo e do vetor */
+}
+
+.logo img {
+    width: 150px;
+}
+
+.links ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.links ul li a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    padding: 8px 12px;
+}
+
+.links ul li a:hover {
+    background: var(--color-hover);
+    border-radius: 8px;
+}
+
+/* Contexto principal (conteúdo à esquerda) */
+.context {
+    display: flex;
+    width: 1184px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding-top: 56px;
+    padding-left: 128px;
+    font-family: "Inter", sans-serif;
+}
+
+/* Estilo do título */
+.context h1 {
+    color: var(--FUNCAP-Secundria-cinza-white-50, #FDFDFD);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.56; /* 49.917px */
+    letter-spacing: -0.96px;
+    text-transform: uppercase;
+    font-family: "Inter", sans-serif;
+}
+
+/* Estilo do parágrafo */
+.context p {
+    color: var(--FUNCAP-Secundria-cinza-white-50, #FDFDFD);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.56; /* 28.078px */
+    letter-spacing: -0.54px;
+    text-align: left;
+    font-family: "Inter", sans-serif;
+}
