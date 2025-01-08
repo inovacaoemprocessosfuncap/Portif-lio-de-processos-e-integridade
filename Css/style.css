@@ -1,130 +1,176 @@
-/* Reset básico */
+/* === Reset Básico === */
+/* Remove margens, paddings e configura o box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Definindo variáveis de cor */
+/* === Variáveis de Tema === */
+/* Definição de cores principais */
 :root {
-    --color-white: #FDFDFD;
-    --color-hover: rgba(0, 72, 35, 0.50);
-    --color-text: #FFF;
+    --color-white: #FDFDFD; /* Branco */
+    --color-hover: rgba(0, 72, 35, 0.50); /* Cor de hover */
+    --color-text: #FFF; /* Cor do texto */
 }
 
-/* Configuração principal da navegação */
+/* === Seção de Navegação === */
 .nav {
-    position: relative; /* Permite o uso de elementos posicionados internamente */
-    height: 400px; /* Altura da área de destaque */
-    overflow: hidden; /* Evita que elementos extrapolem */
+    position: relative; /* Permite posicionamento interno */
+    height: 400px; /* Altura da seção */
+    overflow: hidden; /* Evita elementos fora do limite */
 }
 
-/* Fundo da navegação com rotação de 45 graus */
+/* Fundo com rotação */
 .background-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    transform: rotate(45deg); /* Rotaciona o fundo em 45 graus */
-    transform-origin: top left; /* Define o ponto de origem da rotação no topo esquerdo */
-    z-index: -1; /* Garante que o fundo fique atrás do vetor */
+    transform: rotate(45deg); /* Rotaciona o fundo */
+    transform-origin: top left; /* Define origem da rotação */
+    z-index: -1; /* Fica atrás dos outros elementos */
 }
 
-/* Estilizando a imagem de fundo */
 .background-img {
-    width: 15000%; /* Estica para cobrir todo o header */
-    height: 400%; /* Estica para cobrir todo o header */
-    object-fit: cover; /* Faz com que a imagem cubra sem distorcer */
+    width: 15000%; /* Expande para cobrir a área */
+    height: 400%;
+    object-fit: cover; /* Mantém proporções */
     position: absolute;
-    top: -250%; /* Ajusta a posição para garantir cobertura completa */
-    left: -250%; /* Ajusta a posição para garantir cobertura completa */
-    background-position: right center; /* Alinha a parte mais escura à direita */
+    top: -250%;
+    left: -250%;
+    background-position: right center; /* Ajusta foco do fundo */
 }
 
-/* Decorativo vetor */
+/* Vetor decorativo */
 .decorative-vector {
     position: absolute;
-    top: -186%; /* Ajuste a posição vertical conforme necessário */
-    right: 0%; /* Move o vetor para a direita */
-    transform: translate(50%, -50%); /* Manter o alinhamento centralizado, mas agora deslocado para a direita */
-    width: 77%; /* Tamanho do vetor ajustável */
-    z-index: 0; /* Garante que o vetor fique atrás do conteúdo, mas na frente do fundo */
-    transform: rotate(-45deg); /* Rotaciona o fundo em 45 graus */
+    top: -186%;
+    right: 0;
+    width: 77%;
+    transform: rotate(-45deg); /* Rotaciona o vetor */
+    z-index: 0; /* Atrás do conteúdo, mas à frente do fundo */
 }
 
-/* Conteúdo principal */
+/* Conteúdo principal dentro da navegação */
 .content {
     position: relative;
-    z-index: 3; /* Coloca o conteúdo acima do vetor */
+    z-index: 3; /* Acima do vetor decorativo */
     text-align: center;
     color: var(--color-white);
     padding: 50px 20px;
 }
 
-/* Navbar */
+/* === Barra de Navegação === */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%;
+    padding: 0 10%; /* Espaço lateral */
     margin-bottom: 20px;
-    z-index: 3; /* Garante que a navbar fique acima do fundo e do vetor */
+    z-index: 3; /* Acima do fundo e do vetor */
 }
 
 .logo img {
-    width: 150px;
+    width: 150px; /* Largura da logo */
 }
 
 .links ul {
     display: flex;
-    gap: 20px;
-    list-style: none;
+    gap: 20px; /* Espaçamento entre links */
+    list-style: none; /* Remove bullets */
 }
 
 .links ul li a {
-    text-decoration: none;
+    text-decoration: none; /* Remove sublinhado */
     color: var(--color-text);
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
-    padding: 8px 12px;
+    padding: 8px 12px; /* Área clicável */
 }
 
 .links ul li a:hover {
-    background: var(--color-hover);
-    border-radius: 8px;
+    background: var(--color-hover); /* Cor de fundo ao hover */
+    border-radius: 8px; /* Bordas arredondadas */
 }
 
-/* Contexto principal (conteúdo à esquerda) */
+/* === Contexto (Bloco Esquerdo) === */
 .context {
     display: flex;
-    width: 1184px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
-    padding-top: 56px;
-    padding-left: 128px;
+    gap: 16px; /* Espaçamento entre elementos */
+    padding: 56px 128px 0;
     font-family: "Inter", sans-serif;
+    width: 100%; /* Largura ajustável */
 }
 
-/* Estilo do título */
+/* Título do contexto */
 .context h1 {
-    color: var(--FUNCAP-Secundria-cinza-white-50, #FDFDFD);
     font-size: 32px;
     font-weight: 600;
-    line-height: 1.56; /* 49.917px */
+    line-height: 1.56; /* Aproximadamente 49.9px */
     letter-spacing: -0.96px;
-    text-transform: uppercase;
-    font-family: "Inter", sans-serif;
+    text-transform: uppercase; /* Tudo maiúsculo */
+    color: var(--color-white);
 }
 
-/* Estilo do parágrafo */
+/* Parágrafos do contexto */
 .context p {
-    color: var(--FUNCAP-Secundria-cinza-white-50, #FDFDFD);
     font-size: 18px;
     font-weight: 400;
-    line-height: 1.56; /* 28.078px */
+    line-height: 1.56; /* Aproximadamente 28.1px */
     letter-spacing: -0.54px;
-    text-align: left;
-    font-family: "Inter", sans-serif;
+    text-align: left; /* Alinhado à esquerda */
+    color: var(--color-white);
+}
+
+/* === Blocos de Conteúdo === */
+.blocos {
+    font-family: "Open Sans";
+    display: flex;
+    justify-content: space-between; /* Espaçamento entre blocos */
+    gap: 16px; /* Espaçamento entre blocos */
+    padding: 32px 128px 0; /* Espaço interno */
+    width: 100%; /* Largura total */
+    height: 256px; /* Altura dos blocos */
+    font-style: normal;
+}
+
+.blocos div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Espaçamento interno */
+    padding: 32px; /* Espaçamento interno do bloco */
+    background: var(--FUNCAP-Primria-green-700, #005C2D); /* Cor de fundo */
+    border-radius: 16px; /* Bordas arredondadas */
+    flex: 1 0 0; /* Flexível */
+}
+
+/* === Seção de Processo === */
+.processo {
+    padding: 48px 128px 0; /* Espaçamento interno */
+}
+
+/* === Informações e Manuais === */
+.informacoes h3 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.56; /* Aproximadamente 74.9px */
+    letter-spacing: -1.44px;
+    color: var(--color-white);
+}
+
+.informacoes p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.56; /* Aproximadamente 31.2px */
+    letter-spacing: -0.6px;
+    color: var(--color-white);
+}
+
+.informacoes img {
+    width: 48px; /* Tamanho do ícone */
+    height: 48px;
 }

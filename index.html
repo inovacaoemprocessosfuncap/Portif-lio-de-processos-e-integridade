@@ -1,43 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
+    <!-- Meta tags para definição de charset e responsividade -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de processos e integridade</title>
+    
+    <!-- Título da página -->
+    <title>Portfólio de Processos e Integridade</title>
 
-    <link rel="stylesheet" href="/Css/style.css">
+    <!-- Google Fonts - Fonte Open Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
 
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <!-- Cabeçalho da página -->
     <header>
         <nav class="nav">
-            <!-- Imagem de fundo e vetor decorativo -->
+            <!-- Wrapper para o fundo com imagens decorativas -->
             <div class="background-wrapper">
-                <img src="./Img/Rectangle.png" alt="Background retângulo" class="background-img">
-                <img src="./Img/Vector.png" alt="Ícone decorativo" class="decorative-vector">
+                <img src="./img/rectangle.png" alt="Imagem decorativa de fundo" class="background-img">
+                <img src="./img/vector.png" alt="Ícone decorativo" class="decorative-vector">
             </div>
 
+            <!-- Conteúdo principal dentro da navegação -->
             <div class="content">
+                <!-- Barra de navegação -->
                 <div class="navbar">
+                    <!-- Logo da empresa -->
                     <div class="logo">
-                        <img src="./Img/Logo.png" alt="Logo da empresa">
+                        <a href="#">
+                            <img src="./img/logo.png" alt="Logo da empresa">
+                        </a>
                     </div>
+
+                    <!-- Links da navegação -->
                     <div class="links">
                         <ul>
-                            <li><a href="">INÍCIO</a></li>
-                            <li><a href="">SOBRE</a></li>
-                            <li><a href="">CONHEÇA NOSSOS DADOS</a></li>
+                            <li><a href="#inicio">Início</a></li>
+                            <li><a href="#sobre">Sobre</a></li>
+                            <li><a href="#dados">Conheça nossos dados</a></li>
                         </ul>
                     </div>
                 </div>
 
+                <!-- Seção de introdução com título e descrição -->
                 <div class="context">
-                    <h1>Portfólio de processos e integridade</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac purus vitae nulla porttitor posuere. Ut ullamcorper, ex in venenatis ornare,  lectus risus volutpat justo, ac efficitur turpis nisl ut lorem. Praesent mollis lorem sed libero feugiat commodo. Sed molestie mattis rutrum.</p>
+                    <h1>Portfólio de Processos e Integridade</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac purus vitae nulla porttitor posuere. Ut ullamcorper, ex in venenatis ornare,  lectus risus volutpat justo, ac efficitur turpis nisl ut lorem. Praesent mollis lorem sed libero feugiat commodo. Sed molestie mattis rutrum. </p>
                 </div>
             </div>
         </nav>
     </header>
+
+    <!-- Conteúdo principal da página -->
+    <main>
+        <!-- Seção de blocos com informações principais -->
+        <section class="blocos">
+            <!-- Bloco de informações 1 -->
+            <div class="informacoes">
+                <img src="./img/icone pdf.png" alt="Ícone de PDF">
+                <h3>30</h3>
+                <p>Manuais</p>
+            </div>
+            <!-- Bloco de informações 2 -->
+            <div class="informacoes">
+                <img src="./img/icone processos.png" alt="Ícone de Processos">
+                <h3>566</h3>
+                <p>Processos</p>
+            </div>
+            <!-- Bloco de informações 3 -->
+            <div class="informacoes">
+                <img src="./Img/icone setores.png" alt="Ícone de Setores">
+                <h3>32</h3>
+                <p>Setores</p>
+            </div>
+        </section>
+
+        <!-- Seção de processo -->
+        <section class="processo">
+            <h2>Processos</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac purus vitae nulla porttitor posuere. Vestibulum egestas dui turpis, et dictum risus accumsan id.</p>
+        </section>
+    </main>
+
 </body>
 </html>
