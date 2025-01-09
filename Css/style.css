@@ -132,7 +132,7 @@
     display: flex;
     justify-content: space-between; /* Espaçamento entre blocos */
     gap: 16px; /* Espaçamento entre blocos */
-    padding: 32px 128px 0; /* Espaço interno */
+    padding: 32px 139px 0; /* Espaço interno */
     width: 100%; /* Largura total */
     height: 256px; /* Altura dos blocos */
     font-style: normal;
@@ -150,7 +150,7 @@
 
 /* === Seção de Processo === */
 .processo {
-    padding: 48px 128px 0; /* Espaçamento interno */
+    padding: 48px 139px 0; /* Espaçamento interno */
 }
 
 /* === Informações e Manuais === */
@@ -173,4 +173,60 @@
 .informacoes img {
     width: 48px; /* Tamanho do ícone */
     height: 48px;
+}
+/* === Texto do processo === */
+.processo{
+    font-family: Inter;
+    font-style: normal;
+    line-height: 155.99%; /* 37.438px */
+}
+
+.processo h2{
+    color: var(--FUNCAP-Primria-green-700, #005C2D);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.72px;
+}
+.processo p{
+    color: var(--FUNCAP-Secundria-cinza-white-900, #616161);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.54px;
+}
+/* === Menu parte dos botões superiores === */
+.menu{
+    padding: 40px 139px;
+}
+.bntSuperiorMenu{
+    display: flex;
+}
+.bntSuperiorMenu button{
+    display: flex;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-style: normal;
+    border: none;
+    width: auto;  
+    height: auto;
+    
+}
+
+.bntProcessos{
+    background: var(--FUNCAP-Primria-green-800, #004823);
+    color: var(--FUNCAP-Secundria-cinza-white-50, #FDFDFD);
+    border-radius: 15px 0px 0px ;
+
+}
+
+.bntIntegridade{
+    background: var(--FUNCAP-Secundria-cinza-white-500, #E6E6E6);
+    font-weight: 400;
+    line-height: 155.99%; /* 31.198px */
+    letter-spacing: -0.6px;
+    color: var(--FUNCAP-Secundria-cinza-white-800, #7F7F7F);
+    border-radius: 0px 15px 0px 0px;  
 }
