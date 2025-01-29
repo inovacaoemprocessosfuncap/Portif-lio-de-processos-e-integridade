@@ -9,16 +9,22 @@
 /* === Variáveis de Tema === */
 /* Definição de cores principais */
 :root {
-    --color-white: #FDFDFD; /* Branco */
-    --color-hover: rgba(0, 72, 35, 0.50); /* Cor de hover */
-    --color-text: #FFF; /* Cor do texto */
+    --color-white: #FDFDFD;
+    /* Branco */
+    --color-hover: rgba(0, 72, 35, 0.50);
+    /* Cor de hover */
+    --color-text: #FFF;
+    /* Cor do texto */
 }
 
 /* === Seção de Navegação === */
 .nav {
-    position: relative; /* Permite posicionamento interno */
-    height: 400px; /* Altura da seção */
-    overflow: hidden; /* Evita elementos fora do limite */
+    position: relative;
+    /* Permite posicionamento interno */
+    height: 400px;
+    /* Altura da seção */
+    overflow: hidden;
+    /* Evita elementos fora do limite */
 }
 
 /* Fundo com rotação */
@@ -28,19 +34,25 @@
     left: 0;
     width: 100%;
     height: 100%;
-    transform: rotate(45deg); /* Rotaciona o fundo */
-    transform-origin: top left; /* Define origem da rotação */
-    z-index: -1; /* Fica atrás dos outros elementos */
+    transform: rotate(45deg);
+    /* Rotaciona o fundo */
+    transform-origin: top left;
+    /* Define origem da rotação */
+    z-index: -1;
+    /* Fica atrás dos outros elementos */
 }
 
 .background-img {
-    width: 15000%; /* Expande para cobrir a área */
+    width: 15000%;
+    /* Expande para cobrir a área */
     height: 400%;
-    object-fit: cover; /* Mantém proporções */
+    object-fit: cover;
+    /* Mantém proporções */
     position: absolute;
     top: -250%;
     left: -250%;
-    background-position: right center; /* Ajusta foco do fundo */
+    background-position: right center;
+    /* Ajusta foco do fundo */
 }
 
 /* Vetor decorativo */
@@ -49,14 +61,17 @@
     top: -186%;
     right: 0;
     width: 77%;
-    transform: rotate(-45deg); /* Rotaciona o vetor */
-    z-index: 0; /* Atrás do conteúdo, mas à frente do fundo */
+    transform: rotate(-45deg);
+    /* Rotaciona o vetor */
+    z-index: 0;
+    /* Atrás do conteúdo, mas à frente do fundo */
 }
 
 /* Conteúdo principal dentro da navegação */
 .content {
     position: relative;
-    z-index: 3; /* Acima do vetor decorativo */
+    z-index: 3;
+    /* Acima do vetor decorativo */
     text-align: center;
     color: var(--color-white);
     padding: 50px 20px;
@@ -67,32 +82,41 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%; /* Espaço lateral */
+    padding: 0 10%;
+    /* Espaço lateral */
     margin-bottom: 20px;
-    z-index: 3; /* Acima do fundo e do vetor */
+    z-index: 3;
+    /* Acima do fundo e do vetor */
 }
 
 .logo img {
-    width: 150px; /* Largura da logo */
+    width: 150px;
+    /* Largura da logo */
 }
 
 .links ul {
     display: flex;
-    gap: 20px; /* Espaçamento entre links */
-    list-style: none; /* Remove bullets */
+    gap: 20px;
+    /* Espaçamento entre links */
+    list-style: none;
+    /* Remove bullets */
 }
 
 .links ul li a {
-    text-decoration: none; /* Remove sublinhado */
+    text-decoration: none;
+    /* Remove sublinhado */
     color: var(--color-text);
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
-    padding: 8px 12px; /* Área clicável */
+    padding: 8px 12px;
+    /* Área clicável */
 }
 
 .links ul li a:hover {
-    background: var(--color-hover); /* Cor de fundo ao hover */
-    border-radius: 8px; /* Bordas arredondadas */
+    background: var(--color-hover);
+    /* Cor de fundo ao hover */
+    border-radius: 8px;
+    /* Bordas arredondadas */
 }
 
 /* === Contexto (Bloco Esquerdo) === */
@@ -100,19 +124,23 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px; /* Espaçamento entre elementos */
+    gap: 16px;
+    /* Espaçamento entre elementos */
     padding: 56px 128px 0;
     font-family: "Inter", sans-serif;
-    width: 100%; /* Largura ajustável */
+    width: 100%;
+    /* Largura ajustável */
 }
 
 /* Título do contexto */
 .context h1 {
     font-size: 32px;
     font-weight: 600;
-    line-height: 1.56; /* Aproximadamente 49.9px */
+    line-height: 1.56;
+    /* Aproximadamente 49.9px */
     letter-spacing: -0.96px;
-    text-transform: uppercase; /* Tudo maiúsculo */
+    text-transform: uppercase;
+    /* Tudo maiúsculo */
     color: var(--color-white);
 }
 
@@ -120,9 +148,11 @@
 .context p {
     font-size: 18px;
     font-weight: 400;
-    line-height: 1.56; /* Aproximadamente 28.1px */
+    line-height: 1.56;
+    /* Aproximadamente 28.1px */
     letter-spacing: -0.54px;
-    text-align: left; /* Alinhado à esquerda */
+    text-align: left;
+    /* Alinhado à esquerda */
     color: var(--color-white);
 }
 
@@ -130,34 +160,46 @@
 .blocos {
     font-family: "Open Sans";
     display: flex;
-    justify-content: space-between; /* Espaçamento entre blocos */
-    gap: 16px; /* Espaçamento entre blocos */
-    padding: 32px 139px 0; /* Espaço interno */
-    width: 100%; /* Largura total */
-    height: 256px; /* Altura dos blocos */
+    justify-content: space-between;
+    /* Espaçamento entre blocos */
+    gap: 16px;
+    /* Espaçamento entre blocos */
+    padding: 32px 139px 0;
+    /* Espaço interno */
+    width: 100%;
+    /* Largura total */
+    height: 256px;
+    /* Altura dos blocos */
     font-style: normal;
 }
 
 .blocos div {
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Espaçamento interno */
-    padding: 32px; /* Espaçamento interno do bloco */
-    background: var(--FUNCAP-Primria-green-700, #005C2D); /* Cor de fundo */
-    border-radius: 16px; /* Bordas arredondadas */
-    flex: 1 0 0; /* Flexível */
+    gap: 4px;
+    /* Espaçamento interno */
+    padding: 32px;
+    /* Espaçamento interno do bloco */
+    background: var(--FUNCAP-Primria-green-700, #005C2D);
+    /* Cor de fundo */
+    border-radius: 16px;
+    /* Bordas arredondadas */
+    flex: 1 0 0;
+    /* Flexível */
 }
 
 /* === Seção de Processo === */
 .processo {
-    padding: 48px 139px 0; /* Espaçamento interno */
+    padding: 48px 139px 0;
+    /* Espaçamento interno */
 }
 
 /* === Informações e Manuais === */
 .informacoes h3 {
     font-size: 48px;
     font-weight: 700;
-    line-height: 1.56; /* Aproximadamente 74.9px */
+    line-height: 1.56;
+    /* Aproximadamente 74.9px */
     letter-spacing: -1.44px;
     color: var(--color-white);
 }
@@ -165,42 +207,50 @@
 .informacoes p {
     font-size: 20px;
     font-weight: 400;
-    line-height: 1.56; /* Aproximadamente 31.2px */
+    line-height: 1.56;
+    /* Aproximadamente 31.2px */
     letter-spacing: -0.6px;
     color: var(--color-white);
 }
 
 .informacoes img {
-    width: 48px; /* Tamanho do ícone */
+    width: 48px;
+    /* Tamanho do ícone */
     height: 48px;
 }
+
 /* === Texto do processo === */
-.processo{
+.processo {
     font-family: Inter;
     font-style: normal;
-    line-height: 155.99%; /* 37.438px */
+    line-height: 155.99%;
+    /* 37.438px */
 }
 
-.processo h2{
+.processo h2 {
     color: var(--FUNCAP-Primria-green-700, #005C2D);
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.72px;
 }
-.processo p{
+
+.processo p {
     color: var(--FUNCAP-Secundria-cinza-white-900, #616161);
     font-size: 18px;
     font-weight: 400;
     letter-spacing: -0.54px;
 }
+
 /* === Menu parte dos botões superiores === */
-.menu{
+.menu {
     padding: 40px 139px;
 }
-.bntSuperiorMenu{
+
+.bntSuperiorMenu {
     display: flex;
 }
-.bntSuperiorMenu button{
+
+.bntSuperiorMenu button {
     display: flex;
     padding: 16px 32px;
     justify-content: center;
@@ -210,94 +260,163 @@
     font-size: 20px;
     font-style: normal;
     border: none;
-    width: auto;  
+    width: auto;
     height: auto;
-    
+
 }
 
-.bntProcessos{
+.bntProcessos {
     background: var(--FUNCAP-Primria-green-800, #004823);
     color: var(--FUNCAP-Secundria-cinza-white-50, #FDFDFD);
-    border-radius: 15px 0px 0px ;
+    border-radius: 15px 0px 0px;
 
 }
 
-.bntIntegridade{
+.bntIntegridade {
     background: var(--FUNCAP-Secundria-cinza-white-500, #E6E6E6);
     font-weight: 400;
-    line-height: 155.99%; /* 31.198px */
+    line-height: 155.99%;
+    /* 31.198px */
     letter-spacing: -0.6px;
     color: var(--FUNCAP-Secundria-cinza-white-800, #7F7F7F);
-    border-radius: 0px 15px 0px 0px;  
+    border-radius: 0px 15px 0px 0px;
 }
 
-.portifolio{
- display: flex;
+.portifolio {
+    display: flex;
 }
 
-.dropdown{
+.dropdown {
     background-color: #004823;
     display: flex;
     flex-direction: column;
     width: 403px;
-    gap : 16px;
-}
-.diretoria{
- width: 365px;
- height: 64px;
- background-color: #186531 ;
- border: none;
- color: white;
- font-family: "Open Sans", sans-serif;
- font-size: 16px;
- border-radius: 8px;
- margin: auto;
- padding: 3%; 
- display: flex;
- align-items: center;
- border: 1px solid ;
- border-radius: 8px;
- border-color: white;
+    gap: 16px;
+    height: auto;
+    min-height: 600px;
+    border-bottom: 10px #004823 solid;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+
 }
 
-.div_diretoria{
+/* Estilo do botão da diretoria */
+.diretoria {
+    width: 365px;
+    height: 64px;
+    background-color: #186531;
+    border: none;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: auto;
+    padding: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: border 0.3s ease;
+}
+
+/* Classe para adicionar a borda branca */
+.diretoria:hover {
+    background-color: #124D25;
+}
+
+
+.diretoria svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    /* Suaviza a transição ao trocar os ícones */
+}
+
+.svg-open {
+    display: none;
+    /* Inicialmente, o SVG aberto está oculto */
+}
+
+.diretoria.show .svg-closed {
+    display: none;
+    /* Oculta o SVG inicial quando o submenu estiver aberto */
+    transition: transform 0.3s ease;
+    /* Suaviza a transição ao trocar os ícones */
+}
+
+.diretoria.show .svg-open {
+    display: block;
+    /* Exibe o SVG alternativo quando o submenu estiver aberto */
+    width: 12px;
+    height: 12px;
+    transition: transform 0.3s ease;
+    /* Suaviza a transição ao trocar os ícones */
+}
+
+
+/* Estilo do submenu ao passar o mouse */
+
+.div_diretoria {
     display: flex;
     flex-direction: column;
 }
 
-.dropdown div p{
+.dropdown div p {
     color: var(--FUNCAP-Secundria-cinza-white-800, #7F7F7F);
     margin-top: 8%;
     margin-bottom: 5%;
     margin-left: 7%;
     font-size: 16px;
-    
+
 }
 
-.sub-menu{
-    display: flex;
-    flex-direction: column;
-    padding: 2%;
-    font-size: 26px;
+/* Inicialmente, escondemos o submenu */
+.sub-menu {
+    display: block;
+    /* Mudamos para block para controlar o overflow */
+    overflow: hidden;
+    /* Oculta qualquer conteúdo que exceda o limite de altura */
+    max-height: 0;
+    /* Começa com a altura 0 */
+    transition: max-height 0.5s ease-out;
+    /* Adiciona a transição para a altura */
     list-style: none;
-    width: 371px;
-    margin-left: 4%;
-    border: 1px solid ;
-    border-top:none ;
+    width: 367px;
+    margin-left: 4.5%;
+    border: 1px solid white;
+    border-top: none;
     border-radius: 8px;
-    border-color: white;
-    padding: auto;
+    padding: 0;
+    opacity: 0;
+    /* Inicialmente invisível */
 }
+
+/* Quando o submenu for visível */
+.sub-menu.show {
+    max-height: 800px;
+    /* Definimos uma altura máxima para quando o submenu for visível */
+    opacity: 1;
+    /* Torna o submenu visível */
+}
+
+/* Efeito na borda da "diretoria" quando clicado */
+.diretoria.borda-branca {
+    border: 1px solid white;
+    /* Aplica a borda branca quando a classe for adicionada */
+    background-color: #124D25;
+}
+
 
 .sub-menu li {
     padding: 2%;
     display: flex;
     flex-direction: column;
 }
-.sub-menu li button{
+
+.sub-menu li button {
     width: 339px;
     height: 64px;
-    background-color: #186531 ;
+    background-color: #186531;
     border: none;
     color: white;
     font-family: "Open Sans", sans-serif;
@@ -308,17 +427,7 @@
     padding: 5%;
 }
 
-.diretoria svg{
-    /* Icons */
-
-margin: auto 23px -6px;
-width: 24px;
-height: 24px;
-
-
-/* Inside auto layout */
-flex: none;
-order: 1;
-flex-grow: 0;
-
+.sub-menu li button:hover {
+    background-color: #124D25;
+    /* Cor de fundo quando o item do submenu for hovered */
 }
