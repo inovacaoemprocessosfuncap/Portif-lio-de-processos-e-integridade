@@ -193,7 +193,10 @@
     padding: 48px 139px 0;
     /* Espaçamento interno */
 }
-
+.Integridade {
+    padding: 48px 139px 0;
+    /* Espaçamento interno */
+}
 /* === Informações e Manuais === */
 .informacoes h3 {
     font-size: 48px;
@@ -221,9 +224,12 @@
 
 /* === Texto do processo === */
 .processo {
+
     font-family: Inter;
     font-style: normal;
     line-height: 155.99%;
+    margin-bottom: auto;
+    padding-bottom: auto;
     /* 37.438px */
 }
 
@@ -241,6 +247,27 @@
     letter-spacing: -0.54px;
 }
 
+/* === Texto do processo === */
+.integridade {
+    font-family: Inter;
+    font-style: normal;
+    line-height: 155.99%;
+    /* 37.438px */
+}
+
+.Integridade h2 {
+    color: var(--FUNCAP-Primria-green-700, #005C2D);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.72px;
+}
+
+.Integridade p {
+    color: var(--FUNCAP-Secundria-cinza-white-900, #616161);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.54px;
+}
 /* === Menu parte dos botões superiores === */
 .menu {
     padding: 40px 139px;
@@ -431,3 +458,39 @@
     background-color: #124D25;
     /* Cor de fundo quando o item do submenu for hovered */
 }
+/* Inicialmente, a seção Integridade estará invisível */
+.Integridade {
+    position: absolute;
+    opacity: 0;
+    max-height: 0px;
+    transition: opacity 0s ease, max-height 0.7s ease;
+    overflow: hidden; /* Evita que o conteúdo transborde enquanto a seção está invisível */
+}
+
+/* Quando a classe 'show' é adicionada à seção Integridade, ela será visível */
+.Integridade.show {
+    position: relative;
+    opacity: 1;
+    max-height: 1000px; /* Ajuste conforme necessário */
+    transition: opacity 0.7s ease, max-height 0.7s ease;
+
+}
+
+/* A seção Processo será visível inicialmente */
+.processo {
+    position: initial;
+    opacity: 1;
+    max-height: 1000px; /* Ajuste conforme necessário */
+    transition: opacity 0.7s ease, max-height 0.7s ease;
+}
+
+/* A seção Processo será invisível quando não tiver a classe 'show' */
+
+.processo.show{
+    position: absolute;
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 0.7s ease, max-height 0.7s ease;
+}
+
+
