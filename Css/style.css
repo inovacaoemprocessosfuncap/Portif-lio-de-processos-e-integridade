@@ -11,7 +11,7 @@
 :root {
     --color-white: #FDFDFD;
     /* Branco */
-    --color-hover: rgba(0, 72, 35, 0.50);
+    --color-hover:#D07B00;
     /* Cor de hover */
     --color-text: #FFF;
     /* Cor do texto */
@@ -32,41 +32,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    transform: rotate(45deg);
-    /* Rotaciona o fundo */
-    transform-origin: top left;
-    /* Define origem da rotação */
+    width: auto;
+    height: auto;
     z-index: -1;
     /* Fica atrás dos outros elementos */
 }
-
-.background-img {
-    width: 15000%;
-    /* Expande para cobrir a área */
-    height: 400%;
-    object-fit: cover;
-    /* Mantém proporções */
-    position: absolute;
-    top: -250%;
-    left: -250%;
-    background-position: right center;
-    /* Ajusta foco do fundo */
-}
-
-/* Vetor decorativo */
-.decorative-vector {
-    position: absolute;
-    top: -186%;
-    right: 0;
-    width: 77%;
-    transform: rotate(-45deg);
-    /* Rotaciona o vetor */
-    z-index: 0;
-    /* Atrás do conteúdo, mas à frente do fundo */
-}
-
 /* Conteúdo principal dentro da navegação */
 .content {
     position: relative;
@@ -100,6 +70,8 @@
     /* Espaçamento entre links */
     list-style: none;
     /* Remove bullets */
+    width: auto;
+    height: auto;
 }
 
 .links ul li a {
@@ -108,7 +80,7 @@
     color: var(--color-text);
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
-    padding: 8px 12px;
+    padding: 16px 20px;
     /* Área clicável */
 }
 
@@ -140,8 +112,6 @@
     /* Aproximadamente 49.9px */
     letter-spacing: -0.96px;
     text-transform: uppercase;
-    /* Tudo maiúsculo */
-    color: var(--color-white);
 }
 
 /* Parágrafos do contexto */
@@ -180,7 +150,7 @@
     /* Espaçamento interno */
     padding: 32px;
     /* Espaçamento interno do bloco */
-    background: var(--FUNCAP-Primria-green-700, #005C2D);
+    background: #2FB454;
     /* Cor de fundo */
     border-radius: 16px;
     /* Bordas arredondadas */
@@ -234,7 +204,7 @@
 }
 
 .processo h2 {
-    color: var(--FUNCAP-Primria-green-700, #005C2D);
+    color: #259447;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.72px;
@@ -256,7 +226,7 @@
 }
 
 .Integridade h2 {
-    color: var(--FUNCAP-Primria-green-700, #005C2D);
+    color: #259447;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.72px;
@@ -293,7 +263,7 @@
 }
 
 .bntProcessos {
-    background: var(--FUNCAP-Primria-green-800, #004823);
+    background: var(--FUNCAP-Primria-green-800, #2EAB52);
     color: var(--FUNCAP-Secundria-cinza-white-50, #FDFDFD);
     border-radius: 15px 0px 0px;
 
@@ -314,24 +284,32 @@
 }
 
 .dropdown {
-    background-color: #004823;
+    background-color: #2EAB52;
     display: flex;
     flex-direction: column;
-    width: 403px;
+    width: auto;
+    min-width: 425px;
     gap: 16px;
     height: auto;
     min-height: 600px;
-    border-bottom: 10px #004823 solid;
+    border-bottom: 10px #2EAB52 solid;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
 
+}
+.data{
+    color: #F7F7F7;
+    margin-top: 8%;
+    margin-bottom: 5%;
+    margin-left: 7%;
+    font-size: 16px;
 }
 
 /* Estilo do botão da diretoria */
 .diretoria {
     width: 365px;
     height: 64px;
-    background-color: #186531;
+    background-color: #259447;
     border: none;
     color: white;
     font-family: "Open Sans", sans-serif;
@@ -348,7 +326,7 @@
 
 /* Classe para adicionar a borda branca */
 .diretoria:hover {
-    background-color: #124D25;
+    background-color: #167232;
 }
 
 
@@ -388,14 +366,6 @@
     flex-direction: column;
 }
 
-.dropdown div p {
-    color: var(--FUNCAP-Secundria-cinza-white-800, #7F7F7F);
-    margin-top: 8%;
-    margin-bottom: 5%;
-    margin-left: 7%;
-    font-size: 16px;
-
-}
 
 /* Inicialmente, escondemos o submenu */
 .sub-menu {
@@ -408,8 +378,8 @@
     transition: max-height 0.5s ease-out;
     /* Adiciona a transição para a altura */
     list-style: none;
-    width: 367px;
-    margin-left: 4.5%;
+    max-width: 368px;
+    margin-left: 6.5%;
     border: 1px solid white;
     border-top: none;
     border-radius: 8px;
@@ -430,7 +400,7 @@
 .diretoria.borda-branca {
     border: 1px solid white;
     /* Aplica a borda branca quando a classe for adicionada */
-    background-color: #124D25;
+    background-color: #167232;
 }
 
 
@@ -441,9 +411,9 @@
 }
 
 .sub-menu li button {
-    width: 339px;
-    height: 64px;
-    background-color: #186531;
+    width: auto;
+    height: auto;
+    background-color: #259447;
     border: none;
     color: white;
     font-family: "Open Sans", sans-serif;
@@ -458,39 +428,38 @@
     background-color: #124D25;
     /* Cor de fundo quando o item do submenu for hovered */
 }
-/* Inicialmente, a seção Integridade estará invisível */
-.Integridade {
-    position: absolute;
-    opacity: 0;
-    max-height: 0px;
-    transition: opacity 0s ease, max-height 0.7s ease;
-    overflow: hidden; /* Evita que o conteúdo transborde enquanto a seção está invisível */
-}
-
-/* Quando a classe 'show' é adicionada à seção Integridade, ela será visível */
-.Integridade.show {
+/* Contêiner que vai envolver as seções */
+.container-secoes {
     position: relative;
-    opacity: 1;
-    max-height: 1000px; /* Ajuste conforme necessário */
-    transition: opacity 0.7s ease, max-height 0.7s ease;
-
+    width: 100%;
+    height: 100%; /* Ajuste conforme necessário */
 }
 
-/* A seção Processo será visível inicialmente */
-.processo {
-    position: initial;
-    opacity: 1;
-    max-height: 1000px; /* Ajuste conforme necessário */
-    transition: opacity 0.7s ease, max-height 0.7s ease;
-}
-
-/* A seção Processo será invisível quando não tiver a classe 'show' */
-
-.processo.show{
-    position: absolute;
+/* As seções "Processos" e "Integridade" vão ter transição suave */
+.processo, .Integridade {
+    width: 100%;
+    height: 100%; /* Ajuste conforme necessário */
     opacity: 0;
-    max-height: 0;
-    transition: opacity 0.7s ease, max-height 0.7s ease;
+    visibility: hidden;
+    display: none; /* Inicialmente escondidas */
+    transition: opacity 0.5s ease-in-out, visibility 0s 0.5s; /* Transição suave */
 }
+
+/* Quando a classe .show for adicionada, a seção vai aparecer */
+.processo.show, .Integridade.show {
+    opacity: 1;
+    visibility: visible;
+    display: block; /* Agora a seção fica visível */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Manter o menu dropdown fixo durante a transição das seções */
+.dropdown {
+    position: relative; /* Evita qualquer interação com o dropdown durante a transição */
+    z-index: 10; /* Garante que o dropdown fique sobre as seções */
+}
+
+
+
 
 

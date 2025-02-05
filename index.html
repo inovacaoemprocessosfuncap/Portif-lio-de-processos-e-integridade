@@ -14,6 +14,8 @@
 
     <!-- Link para o arquivo CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Link para o arquivo JavaScript (carregado de forma assíncrona) -->
     <script defer src="/js/js.js"></script>
 </head>
 
@@ -24,8 +26,30 @@
         <nav class="nav">
             <!-- Wrapper para o fundo com imagens decorativas -->
             <div class="background-wrapper">
-                <img src="./img/rectangle.png" alt="Imagem decorativa de fundo" class="background-img">
-                <img src="./img/vector.png" alt="Ícone decorativo" class="decorative-vector">
+                <svg width="1440" height="1067" viewBox="0 0 1440 1067" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M551.948 155.117C545.085 155.581 645.15 638.884 730.849 831.902L2054.98 147.065C1533.57 152.799 652.067 148.348 551.948 155.117Z" fill="url(#paint0_linear_547_1050)"/>
+                    <path d="M474.062 -420.46C474.062 -420.46 500.659 -117.08 549.067 158.653L2047.55 150.909L2450.12 -57.297C1812.72 -169.58 474.062 -420.46 474.062 -420.46Z" fill="url(#paint1_linear_547_1050)"/>
+                    <path d="M731.076 831.784L277.496 1066.37L-193.377 155.94C130.221 150.213 552.223 147.629 552.782 156.731C556.798 222.173 657.765 632.36 731.076 831.784Z" fill="url(#paint2_linear_547_1050)"/>
+                    <path d="M552.378 158.986L-193.377 155.939L-589.946 -610.827L474.06 -420.46C474.06 -420.46 494.141 -237.455 510.163 -119.95C525.004 -11.1105 552.378 158.986 552.378 158.986Z" fill="url(#paint3_linear_547_1050)"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_547_1050" x1="826.897" y1="747.443" x2="1510.88" y2="126.521" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#4EC4CE"/>
+                    <stop offset="1" stop-color="#36B987"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_547_1050" x1="1315.55" y1="-16.7947" x2="2115.55" y2="-197.792" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FA9F1B"/>
+                    <stop offset="1" stop-color="#EE5D23"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_547_1050" x1="732.087" y1="831.262" x2="-211.527" y2="457.422" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#37BD9B"/>
+                    <stop offset="1" stop-color="#41BFB1"/>
+                    </linearGradient>
+                    <linearGradient id="paint3_linear_547_1050" x1="-100.985" y1="179.765" x2="159.356" y2="-139.534" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#37BB95"/>
+                    <stop offset="1" stop-color="#2FB451"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>      
             </div>
 
             <!-- Conteúdo principal dentro da navegação -->
@@ -44,7 +68,7 @@
                         <ul>
                             <li><a href="#inicio">Início</a></li>
                             <li><a href="#sobre">Sobre</a></li>
-                            <li><a href="#dados">Conheça nossos dados</a></li>
+                            <li><a href="#dados">Painel de dados</a></li>
                         </ul>
                     </div>
                 </div>
@@ -71,12 +95,14 @@
                 <h3>30</h3>
                 <p>Manuais</p>
             </div>
+
             <!-- Bloco de informações 2 -->
             <div class="informacoes">
                 <img src="./img/icone processos.png" alt="Ícone de Processos">
                 <h3>566</h3>
                 <p>Processos</p>
             </div>
+
             <!-- Bloco de informações 3 -->
             <div class="informacoes">
                 <img src="./Img/icone setores.png" alt="Ícone de Setores">
@@ -85,7 +111,8 @@
             </div>
         </section>
 
-        <!-- Seção de processo -->
+        <!-- Seção de processos -->
+         <div class="container-secoes">
         <section class="processo">
             <h2>Processos</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac purus vitae nulla porttitor posuere.
@@ -93,20 +120,32 @@
                 Praesent mollis lorem sed libero feugiat commodo. Sed molestie mattis rutrum. Vestibulum egestas dui
                 turpis, et dictum risus accumsan id. </p>
         </section>
+
+        <!-- Seção de integridade -->
         <section class="Integridade">
             <h2>Integridade</h2>
-            <p>O Programa de Integridade da FUNCAP é um conjunto de medidas que visa sistematizar ações em desenvolvimento ou a serem implementadas, alinhadas ao Programa de Integridade do Poder Executivo do Estado do Ceará, instituído pela Lei nº 16.717/2021. </p>
+            <p>O Programa de Integridade da FUNCAP é um conjunto de medidas que visa sistematizar ações em desenvolvimento ou a serem implementadas, alinhadas ao Programa de Integridade do Poder Executivo do Estado do Ceará, instituído pela Lei nº 16.717/2021.</p>
         </section>
+        </div>
+
+        <!-- Seção de menu interativo -->
         <section class="menu">
+            <!-- Botões para exibir informações sobre processos e integridade -->
             <div class="bntSuperiorMenu">
                 <button class="bntProcessos">Processos Mapeados</button>
                 <button class="bntIntegridade">Integridade</button>
             </div>
+
+            <!-- Dropdown de diretoria -->
             <div class="portifolio">
+                <!-- Exibição da data de atualização -->
                 <div class="dropdown">
-                    <div>
-                        <p>Atualizado em 28/01/2025</p>
+                    <div class="data">
+                        <p>Atualizado em 05/02/2025</p>
                     </div>
+
+                    <!-- Blocos de diretoria com menus suspensos -->
+                    <!-- Diretoria Administrativa-Financeira -->
                     <div class="div_diretoria">
                         <button class="diretoria">
                             Diretoria Administrativa-Financeira
@@ -285,8 +324,13 @@
                         </ul>
                     </div>
                 </div>
+
+                    <!-- Continuar com outras diretorias conforme necessário -->
+                </div>
+
+                <!-- Informações de parte branca do portfólio -->
                 <div class="portifolio_parte_branca">
-                    <p>Processosnda Diretoria Admisitrativa financeira</p>
+                    <p>Processos da Diretoria Administrativa Financeira</p>
                 </div>
             </div>
         </section>

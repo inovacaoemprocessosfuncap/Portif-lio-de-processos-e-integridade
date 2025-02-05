@@ -25,24 +25,27 @@ const btnIntegridade = document.querySelector('.bntIntegridade');
 const secaoProcesso = document.querySelector('.processo');
 const secaoIntegridade = document.querySelector('.Integridade');
 
-// Função para mostrar uma seção
+// Função para mostrar uma seção com transição suave
 function mostrarSecao(secao) {
     secao.classList.add('show');  // Adiciona a classe 'show' para mostrar a seção
 }
 
-// Função para esconder uma seção
+// Função para esconder uma seção com transição suave
 function esconderSecao(secao) {
     secao.classList.remove('show');  // Remove a classe 'show' para esconder a seção
 }
 
+// Inicialmente, mostra a seção "Processos" e esconde a de "Integridade"
+mostrarSecao(secaoProcesso);
+esconderSecao(secaoIntegridade);
 
 // Evento de clique no botão "Processos"
 btnProcesso.addEventListener('click', function () {
     esconderSecao(secaoIntegridade);  // Esconde a seção "Integridade"
-    esconderSecao(secaoProcesso);  // Esconde a seção "Processos"
+    mostrarSecao(secaoProcesso);  // Mostra a seção "Processos"
 
     // Ajusta a aparência dos botões
-    btnProcesso.style.background = '#004823';
+    btnProcesso.style.background = '#2EAB52';
     btnProcesso.style.color = '#FDFDFD';
     btnIntegridade.style.background = '#E6E6E6';
     btnIntegridade.style.color = '#7F7F7F';
@@ -54,19 +57,18 @@ btnProcesso.addEventListener('click', function () {
 
 // Evento de clique no botão "Integridade"
 btnIntegridade.addEventListener('click', function () {
+    esconderSecao(secaoProcesso);  // Esconde a seção "Processos"
     mostrarSecao(secaoIntegridade);  // Mostra a seção "Integridade"
-    mostrarSecao(secaoProcesso);  // Mostra a seção "Processos"
 
     // Ajusta a aparência dos botões
-    btnIntegridade.style.background = '#004823';
+    btnIntegridade.style.background = '#2EAB52';
     btnIntegridade.style.color = '#FDFDFD';
     btnProcesso.style.background = '#E6E6E6';
     btnProcesso.style.color = '#7F7F7F';
 
     // Atualiza o texto dos botões
     btnIntegridade.textContent = 'Integridade';
-    btnProcesso.textContent = 'Processos';
+    btnProcesso.textContent = 'Processos Mapeados';
 });
-
 
 
