@@ -11,7 +11,7 @@
 :root {
     --color-white: #FDFDFD;
     /* Branco */
-    --color-hover:#D07B00;
+    --color-hover: #D07B00;
     /* Cor de hover */
     --color-text: #FFF;
     /* Cor do texto */
@@ -37,6 +37,7 @@
     z-index: -1;
     /* Fica atrás dos outros elementos */
 }
+
 /* Conteúdo principal dentro da navegação */
 .content {
     position: relative;
@@ -163,10 +164,12 @@
     padding: 48px 139px 0;
     /* Espaçamento interno */
 }
+
 .Integridade {
     padding: 48px 139px 0;
     /* Espaçamento interno */
 }
+
 /* === Informações e Manuais === */
 .informacoes h3 {
     font-size: 48px;
@@ -238,9 +241,11 @@
     font-weight: 400;
     letter-spacing: -0.54px;
 }
+
 /* === Menu parte dos botões superiores === */
 .menu {
     padding: 40px 139px;
+
 }
 
 .bntSuperiorMenu {
@@ -281,6 +286,12 @@
 
 .portifolio {
     display: flex;
+    justify-content: space-between;
+}
+
+.Menu-dropdown {
+    display: flex;
+
 }
 
 .dropdown {
@@ -293,11 +304,11 @@
     height: auto;
     min-height: 600px;
     border-bottom: 10px #2EAB52 solid;
-    border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
 
 }
-.data{
+
+.data {
     color: #F7F7F7;
     margin-top: 8%;
     margin-bottom: 5%;
@@ -428,38 +439,217 @@
     background-color: #124D25;
     /* Cor de fundo quando o item do submenu for hovered */
 }
+
 /* Contêiner que vai envolver as seções */
 .container-secoes {
     position: relative;
     width: 100%;
-    height: 100%; /* Ajuste conforme necessário */
+    height: 100%;
+    /* Ajuste conforme necessário */
 }
 
 /* As seções "Processos" e "Integridade" vão ter transição suave */
-.processo, .Integridade {
+.processo,
+.Integridade {
     width: 100%;
-    height: 100%; /* Ajuste conforme necessário */
+    height: 100%;
+    /* Ajuste conforme necessário */
     opacity: 0;
     visibility: hidden;
-    display: none; /* Inicialmente escondidas */
-    transition: opacity 0.5s ease-in-out, visibility 0s 0.5s; /* Transição suave */
+    display: none;
+    /* Inicialmente escondidas */
+    transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
+    /* Transição suave */
 }
 
 /* Quando a classe .show for adicionada, a seção vai aparecer */
-.processo.show, .Integridade.show {
+.processo.show,
+.Integridade.show {
     opacity: 1;
     visibility: visible;
-    display: block; /* Agora a seção fica visível */
+    display: block;
+    /* Agora a seção fica visível */
     transition: opacity 0.5s ease-in-out;
 }
 
 /* Manter o menu dropdown fixo durante a transição das seções */
 .dropdown {
-    position: relative; /* Evita qualquer interação com o dropdown durante a transição */
-    z-index: 10; /* Garante que o dropdown fique sobre as seções */
+    position: relative;
+    /* Evita qualquer interação com o dropdown durante a transição */
+    z-index: 10;
+    /* Garante que o dropdown fique sobre as seções */
 }
 
+.portifolio_parte_branca {
+    border: 1px #3FB383 solid;
+    max-width: 745px;
+    width: 645px;
+    height: 650px;
+    max-height: 700px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
 
+.texto-cinza-superior {
+    color: var(--FUNCAP-Secundria-cinza-white-800, #7F7F7F);
+    font-size: 20px;
+}
 
+.texto-verde-superior {
+    color: #2FB454;
+}
 
+.nucleo {
+    font-size: 25px;
+    color: #2FB454;
+    padding-top: 1%;
+}
 
+.superior-dorpdown {
+    padding: 3%;
+}
+
+.pesquisa-texto {
+    padding-top: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pesquisa input {
+    height: 33px;
+    border-radius: 8px;
+    border: 1px #E6E6E6  solid;
+    padding-left: 15px;
+    /* Espaço para o ícone */
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    width: auto;
+}
+
+.pesquisa {
+    position: relative;
+    width: auto;
+    max-width: 300px;
+    /* Ajuste o tamanho conforme necessário */
+}
+
+.pesquisa svg {
+    position: absolute;
+    top: 20%;
+    left: 87%;
+    /* Posiciona o ícone dentro do campo de pesquisa */
+    pointer-events: none;
+    /* Faz com que o ícone não interfira na interação com o campo de texto */
+}
+
+.documentos {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.documentosPDF {
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: -1%;
+}
+
+.documentosPDF button {
+    height: auto;
+    width: auto;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 7px;
+    border: none;
+    background-color: white;
+    font-family: "Open Sans", sans-serif;
+    gap: 1fpx;
+}
+.título-processo{
+    color: #616161;
+}
+
+.documentosPDF button a {
+    text-decoration: none;
+    color: #7F7F7F;
+}
+
+.documentosPDF button:hover {
+    background-color: #dfdfdf;
+}
+
+.documentosPDF button a:hover {
+    color: #2EAB52;
+}
+
+.portifolio_docs-gead {
+    padding: 2.5%;
+    margin-top: 3%;
+    border: 1px #E6E6E6 solid;
+    height: 48px;
+    width: 100%;
+    border-radius: 8px;
+}
+.paginacao{
+    display: flex;
+    margin: 3% 0 0 78% ;
+}
+.paginacao button{
+    width: auto;
+    padding: 25%;
+    border-radius: 5px;
+    border: 1px #E6E6E6 solid;
+    background-color: white;
+    color: #7F7F7F;
+}
+.butoes-pag{
+    display: flex;
+    justify-content: space-between;
+    gap: 15%;
+}
+.paginacao button:hover{
+   background-color: #E6E6E6;
+   color: black;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .links ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .context {
+        padding: 20px;
+    }
+
+    .blocos {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .portifolio {
+        flex-direction: column;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+
+    .portifolio_parte_branca {
+        width: 100%;
+        height: auto;
+    }
+}
