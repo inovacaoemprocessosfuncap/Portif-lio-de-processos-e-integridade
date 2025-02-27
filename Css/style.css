@@ -613,13 +613,35 @@
     display: flex;
     justify-content: space-between;
     gap: 15%;
+    cursor: pointer;
 }
 .paginacao button:hover{
    background-color: #E6E6E6;
    color: black;
 }
 
-@media (max-width: 768px) {
+
+.butoes-pag button.active {
+    font-weight: bold;
+}
+
+/*VOLTAR AQUIIIIIIIIIIIIIIIIIII*/
+
+/* Inicialmente esconder todas as páginas */
+.GEAD-pag-1, .GEAD-pag-2, .GEAD-pag-3 {
+    display: none;
+}
+
+/* Mostrar a primeira página ao carregar */
+.GEAD-pag-1.active, .GEAD-pag-2.active, .GEAD-pag-3.active {
+    display: block;
+}
+
+/* Estilo para o botão da página ativa */
+.page-number.active {
+    background-color: #E6E6E6;
+}
+/*@media (max-width: 768px) {
     .navbar {
         flex-direction: column;
         align-items: flex-start;

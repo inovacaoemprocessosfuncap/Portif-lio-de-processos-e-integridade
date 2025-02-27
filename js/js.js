@@ -71,4 +71,76 @@ btnIntegridade.addEventListener('click', function () {
     btnProcesso.textContent = 'Processos Mapeados';
 });
 
+//paginação
+// Inicializa a página ativa
+let currentPage = 1;
+const totalPages = 3;
+
+// Função para mostrar a página atual e esconder as outras
+function showPage(pageNumber) {
+    // Esconde todas as páginas
+    const pages = document.querySelectorAll('.GEAD-pag-1, .GEAD-pag-2, .GEAD-pag-3');
+    pages.forEach(page => page.classList.remove('active'));
+
+    // Mostra a página correspondente
+    const activePage = document.querySelector(`.GEAD-pag-${pageNumber}`);
+    if (activePage) {
+        activePage.classList.add('active');
+    }
+
+    // Atualiza os botões de página numerada
+    const pageButtons = document.querySelectorAll('.page-number');
+    pageButtons.forEach(button => {
+        // Remove a classe active de todos os botões
+        button.classList.remove('active');
+        
+        // Se o botão corresponder à página atual, adiciona a classe active
+        if (parseInt(button.getAttribute('data-page')) === pageNumber) {
+            button.classList.add('active');
+        }
+    });
+}
+
+// Inicializa a página ao carregar
+document.addEventListener("DOMContentLoaded", function () {
+    showPage(currentPage);
+
+    // Ação de clicar nas páginas numeradas
+    const pageButtons = document.querySelectorAll('.page-number');
+    pageButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const page = parseInt(event.target.getAttribute('data-page'));
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                showPage(currentPage);
+            }
+        });
+    });
+
+    // Ação de navegar para a próxima página
+    const nextButton = document.querySelectorAll('.next');
+    nextButton.forEach(button => {
+        button.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+    });
+
+    // Ação de navegar para a página anterior
+    const prevButton = document.querySelectorAll('.prev');
+    prevButton.forEach(button => {
+        button.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+    });
+});
+
+
+
+
 
