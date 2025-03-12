@@ -286,12 +286,7 @@
 
 .portifolio {
     display: flex;
-    justify-content: space-between;
-}
-
-.Menu-dropdown {
-    display: flex;
-
+    width: auto;
 }
 
 .dropdown {
@@ -380,14 +375,9 @@
 
 /* Inicialmente, escondemos o submenu */
 .sub-menu {
-    display: block;
-    /* Mudamos para block para controlar o overflow */
     overflow: hidden;
-    /* Oculta qualquer conteúdo que exceda o limite de altura */
-    max-height: 0;
-    /* Começa com a altura 0 */
-    transition: max-height 0.5s ease-out;
-    /* Adiciona a transição para a altura */
+    max-height: 0; /* Mantém a altura inicial como 0 */
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
     list-style: none;
     max-width: 368px;
     margin-left: 6.5%;
@@ -396,12 +386,13 @@
     border-radius: 8px;
     padding: 0;
     opacity: 0;
-    /* Inicialmente invisível */
+    display: none; /* Inicia invisível */
 }
+    /* Inicialmente invisível */
 
 /* Quando o submenu for visível */
 .sub-menu.show {
-    max-height: 800px;
+    max-height: 1400px;
     /* Definimos uma altura máxima para quando o submenu for visível */
     opacity: 1;
     /* Torna o submenu visível */
@@ -447,31 +438,6 @@
     height: 100%;
     /* Ajuste conforme necessário */
 }
-
-/* As seções "Processos" e "Integridade" vão ter transição suave */
-.processo,
-.Integridade {
-    width: 100%;
-    height: 100%;
-    /* Ajuste conforme necessário */
-    opacity: 0;
-    visibility: hidden;
-    display: none;
-    /* Inicialmente escondidas */
-    transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
-    /* Transição suave */
-}
-
-/* Quando a classe .show for adicionada, a seção vai aparecer */
-.processo.show,
-.Integridade.show {
-    opacity: 1;
-    visibility: visible;
-    display: block;
-    /* Agora a seção fica visível */
-    transition: opacity 0.5s ease-in-out;
-}
-
 /* Manter o menu dropdown fixo durante a transição das seções */
 .dropdown {
     position: relative;
@@ -518,7 +484,7 @@
 .pesquisa input {
     height: 33px;
     border-radius: 8px;
-    border: 1px #E6E6E6  solid;
+    border: 1px #E6E6E6 solid;
     padding-left: 15px;
     /* Espaço para o ícone */
     font-family: "Open Sans", sans-serif;
@@ -572,7 +538,8 @@
     font-family: "Open Sans", sans-serif;
     gap: 1fpx;
 }
-.título-processo{
+
+.título-processo {
     color: #616161;
 }
 
@@ -597,11 +564,13 @@
     width: 100%;
     border-radius: 8px;
 }
-.paginacao{
+
+.paginacao {
     display: flex;
-    margin: 3% 0 0 78% ;
+    margin: 3% 0 0 78%;
 }
-.paginacao button{
+
+.paginacao button {
     width: auto;
     padding: 25%;
     border-radius: 5px;
@@ -609,38 +578,81 @@
     background-color: white;
     color: #7F7F7F;
 }
-.butoes-pag{
-    display: flex;
-    justify-content: space-between;
-    gap: 15%;
-    cursor: pointer;
-}
-.paginacao button:hover{
-   background-color: #E6E6E6;
-   color: black;
-}
-
-
-.butoes-pag button.active {
-    font-weight: bold;
-}
-
-/*VOLTAR AQUIIIIIIIIIIIIIIIIIII*/
-
-/* Inicialmente esconder todas as páginas */
-.GEAD-pag-1, .GEAD-pag-2, .GEAD-pag-3 {
+/* Esconde todas as páginas por padrão */
+[class*="-pag-"] {
     display: none;
 }
 
-/* Mostrar a primeira página ao carregar */
-.GEAD-pag-1.active, .GEAD-pag-2.active, .GEAD-pag-3.active {
+/* Mostra apenas a página ativa */
+[class*="-pag-"].active {
     display: block;
 }
 
-/* Estilo para o botão da página ativa */
+/* Estilização dos botões de paginação (opcional) */
+.paginacao {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.butoes-pag {
+    display: flex;
+    gap: 5px;
+}
+
+.butoes-pag button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #EEEEEE;
+    color: #7F7F7F;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.butoes-pag button:hover {
+    background-color:#E6E6E6;
+    color: black;
+}
+
+/* Botão ativo da página */
 .page-number.active {
     background-color: #E6E6E6;
+    color: black;
 }
+
+
+/* Estilos para as seções */
+.processo, .Integridade, .Menu-dropdown, .secao_Integridade {
+    display: none; /* Inicialmente oculto */
+    opacity: 0; /* Inicialmente transparente */
+    transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
+   
+}
+
+.processo.show, .Integridade.show, .Menu-dropdown.show, .secao_Integridade.show {
+    display:block; /* Mostra o elemento */
+    opacity: 1; /* Torna o elemento visível */
+    transition: opacity 1s ease-in-out;
+}
+
+/* Inicialmente, a seção "Processos" e o Menu-dropdown estão visíveis */
+.processo, .Menu-dropdown {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+.sub-menu.ativo {
+    display: block;
+    max-height: 500px; /* Define um valor alto o suficiente para mostrar todo o conteúdo */
+    opacity: 1;
+}
+
+.conteudo {
+    display: none;
+   
+}
+
 /*@media (max-width: 768px) {
     .navbar {
         flex-direction: column;

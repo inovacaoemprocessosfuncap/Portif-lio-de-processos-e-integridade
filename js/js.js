@@ -16,6 +16,9 @@ diretoriaButtons.forEach(button => {
         button.classList.toggle('show'); // Isso vai alternar entre os SVGs
     });
 });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Evento de mostra seção 
 
 // Seleciona os botões de cada seção
 const btnProcesso = document.querySelector('.bntProcessos');
@@ -25,24 +28,39 @@ const btnIntegridade = document.querySelector('.bntIntegridade');
 const secaoProcesso = document.querySelector('.processo');
 const secaoIntegridade = document.querySelector('.Integridade');
 
-// Função para mostrar uma seção com transição suave
+// Seleciona o Menu-dropdown e a nova seção
+const menuDropdown = document.querySelector('.Menu-dropdown');
+const secao_Integridade = document.querySelector('.secao_Integridade');
+
+// Função para mostrar uma seção
 function mostrarSecao(secao) {
-    secao.classList.add('show');  // Adiciona a classe 'show' para mostrar a seção
+    secao.style.display = 'flex'; // Mostra a seção
+    setTimeout(() => {
+        secao.style.opacity = '1'; // Torna a seção visível com transição
+        secao.style.display = 'flex';
+    }, 10);
 }
 
-// Função para esconder uma seção com transição suave
+// Função para esconder uma seção
 function esconderSecao(secao) {
-    secao.classList.remove('show');  // Remove a classe 'show' para esconder a seção
+    secao.style.opacity = '0'; // Torna a seção transparente
+    setTimeout(() => {
+        secao.style.display = 'none'; // Oculta a seção após a transição
+    }, 300); // Tempo correspondente à duração da transição
 }
 
-// Inicialmente, mostra a seção "Processos" e esconde a de "Integridade"
-mostrarSecao(secaoProcesso);
-esconderSecao(secaoIntegridade);
+// Inicialmente, mostra a seção "Processos" e o Menu-dropdown
+mostrarSecao(secaoProcesso); // Mostra a seção "Processos"
+mostrarSecao(menuDropdown); // Mostra o Menu-dropdown
+esconderSecao(secaoIntegridade); // Esconde a seção "Integridade"
+esconderSecao(secao_Integridade); // Esconde a nova seção
 
 // Evento de clique no botão "Processos"
 btnProcesso.addEventListener('click', function () {
     esconderSecao(secaoIntegridade);  // Esconde a seção "Integridade"
+    esconderSecao(secao_Integridade); // Esconde a nova seção
     mostrarSecao(secaoProcesso);  // Mostra a seção "Processos"
+    mostrarSecao(menuDropdown); // Mostra o Menu-dropdown
 
     // Ajusta a aparência dos botões
     btnProcesso.style.background = '#2EAB52';
@@ -58,7 +76,9 @@ btnProcesso.addEventListener('click', function () {
 // Evento de clique no botão "Integridade"
 btnIntegridade.addEventListener('click', function () {
     esconderSecao(secaoProcesso);  // Esconde a seção "Processos"
+    esconderSecao(menuDropdown); // Esconde o Menu-dropdown
     mostrarSecao(secaoIntegridade);  // Mostra a seção "Integridade"
+    mostrarSecao(secao_Integridade); // Mostra a nova seção
 
     // Ajusta a aparência dos botões
     btnIntegridade.style.background = '#2EAB52';
@@ -71,76 +91,112 @@ btnIntegridade.addEventListener('click', function () {
     btnProcesso.textContent = 'Processos Mapeados';
 });
 
-//paginação
-// Inicializa a página ativa
-let currentPage = 1;
-const totalPages = 3;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Função para mostrar a página atual e esconder as outras
-function showPage(pageNumber) {
-    // Esconde todas as páginas
-    const pages = document.querySelectorAll('.GEAD-pag-1, .GEAD-pag-2, .GEAD-pag-3');
-    pages.forEach(page => page.classList.remove('active'));
+//Evento da pag
 
-    // Mostra a página correspondente
-    const activePage = document.querySelector(`.GEAD-pag-${pageNumber}`);
-    if (activePage) {
-        activePage.classList.add('active');
+document.addEventListener("DOMContentLoaded", function () {
+    // Função para detectar a seção ativa
+    function getActiveSection() {
+        return document.querySelector('.conteudo[style*="display: block"]');
     }
 
-    // Atualiza os botões de página numerada
-    const pageButtons = document.querySelectorAll('.page-number');
-    pageButtons.forEach(button => {
-        // Remove a classe active de todos os botões
-        button.classList.remove('active');
-        
-        // Se o botão corresponder à página atual, adiciona a classe active
-        if (parseInt(button.getAttribute('data-page')) === pageNumber) {
-            button.classList.add('active');
+    // Função para exibir a página correta dentro da seção ativa
+    function showPage(pageNumber, activeSection) {
+        if (!activeSection) return;
+
+        const sectionName = activeSection.classList[0]; // Nome da classe da seção ativa
+        const pages = activeSection.querySelectorAll(`[class^="${sectionName}-pag-"]`);
+
+        // Esconde todas as páginas dentro da seção ativa
+        pages.forEach(page => page.classList.remove('active'));
+
+        // Mostra a página correspondente
+        const activePage = activeSection.querySelector(`.${sectionName}-pag-${pageNumber}`);
+        if (activePage) {
+            activePage.classList.add('active');
         }
-    });
-}
+    }
 
-// Inicializa a página ao carregar
-document.addEventListener("DOMContentLoaded", function () {
-    showPage(currentPage);
-
-    // Ação de clicar nas páginas numeradas
-    const pageButtons = document.querySelectorAll('.page-number');
-    pageButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const page = parseInt(event.target.getAttribute('data-page'));
-            if (page >= 1 && page <= totalPages) {
-                currentPage = page;
-                showPage(currentPage);
-            }
-        });
+    // Inicializa a página ao carregar
+    document.querySelectorAll('.conteudo').forEach(section => {
+        showPage(1, section); // Sempre inicia na página 1
     });
 
-    // Ação de navegar para a próxima página
-    const nextButton = document.querySelectorAll('.next');
-    nextButton.forEach(button => {
-        button.addEventListener('click', () => {
-            if (currentPage < totalPages) {
-                currentPage++;
-                showPage(currentPage);
-            }
-        });
-    });
+    // Evento para os botões de paginação
+    document.querySelectorAll('.paginacao').forEach(pagination => {
+        pagination.addEventListener('click', function (event) {
+            const button = event.target;
+            const activeSection = getActiveSection();
+            if (!activeSection) return;
 
-    // Ação de navegar para a página anterior
-    const prevButton = document.querySelectorAll('.prev');
-    prevButton.forEach(button => {
-        button.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                showPage(currentPage);
+            let currentPage = parseInt(activeSection.getAttribute("data-current-page")) || 1;
+            let totalPages = activeSection.querySelectorAll(`[class^="${activeSection.classList[0]}-pag-"]`).length;
+
+            if (button.classList.contains('page-number')) {
+                const page = parseInt(button.getAttribute('data-page'));
+                if (page >= 1 && page <= totalPages) {
+                    currentPage = page; // Atualiza a página ativa
+                }
+            } else if (button.classList.contains('next')) {
+                if (currentPage < totalPages) currentPage++;
+            } else if (button.classList.contains('prev')) {
+                if (currentPage > 1) currentPage--;  // Corrigido para garantir que não vá abaixo de 1
             }
+
+            activeSection.setAttribute("data-current-page", currentPage);
+            showPage(currentPage, activeSection);
         });
     });
 });
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Evento do sub-menu
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Seleciona todos os botões de diretoria
+    const diretorias = document.querySelectorAll(".diretoria");
+
+    diretorias.forEach((diretoria) => {
+        diretoria.addEventListener("click", function () {
+            const subMenu = this.nextElementSibling; // Pega o submenu associado
+            
+            // Alterna a altura máxima para expandir/recolher suavemente
+            if (subMenu.style.maxHeight && subMenu.style.maxHeight !== "0px") {
+                subMenu.style.maxHeight = "0";
+                subMenu.style.opacity = "0";
+                setTimeout(() => (subMenu.style.display = "none"), 500); // Aguarda a transição
+            } else {
+                subMenu.style.display = "block";
+                setTimeout(() => {
+                    subMenu.style.maxHeight = subMenu.scrollHeight + "px";
+                    subMenu.style.opacity = "1";
+                }, 10);
+            }
+        });
+    });
+
+    // Seleciona todos os botões do submenu
+    const subMenuButtons = document.querySelectorAll(".sub-menu button");
+
+    subMenuButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            const sectionName = this.textContent.trim().replace(/\s+/g, ''); // Remove espaços
+            const targetSection = document.querySelector(`.${sectionName}`);
+
+            // Esconde todas as seções antes de mostrar a correta
+            document.querySelectorAll(".conteudo").forEach((section) => {
+                section.style.display = "none";
+            });
+
+            // Exibe apenas a seção correspondente
+            if (targetSection) {
+                targetSection.style.display = "block";
+            }
+        });
+    });
+});
 
 
