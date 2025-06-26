@@ -1,0 +1,334 @@
+/* === Reset Básico === */
+/* Remove margens, paddings e configura o box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Variáveis de Tema === */
+/* Definição de cores principais - Adicionadas para maior consistência */
+:root {
+    --color-white: #FDFDFD;
+    --color-hover: #D07B00;
+    --color-text: #FFF;
+    --funcap-primary-green-800: #2EAB52;
+    --funcap-secondary-gray-white-50: #FDFDFD;
+    --funcap-secondary-gray-white-500: #E6E6E6;
+    --funcap-secondary-gray-white-800: #7F7F7F;
+    --funcap-primary-green-700: #259447;
+    --funcap-primary-green-900: #124D25;
+}
+
+body {
+  font-family: "Open Sans", sans-serif; /* Consistente com a importação */
+  line-height: 1.6;
+  color: #333;
+  text-align: left; /* Garante que todos os textos se alinhem à esquerda por padrão*/
+}
+
+.nav {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Fica atrás do conteúdo principal */
+}
+
+/* Container do conteúdo principal do cabeçalho */
+.content {
+    position: relative;
+    z-index: 3; /* Acima do background SVG */
+    /* text-align: left; REMOVIDO: será herdado do body ou definido em elementos específicos */
+    color: var(--color-white);
+    padding: 50px 10%; /* Padding lateral consistente para alinhamento */
+}
+
+/* === Barra de Navegação === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 0 10%;  Já está no .content, não precisa repetir aqui se o logo e links forem filhos diretos do .navbar */
+    margin-bottom: 20px;
+    padding-left: 90px;
+    z-index: 3;
+}
+
+/* Ajustes para a logo e texto "FUNCAP" */
+.logo {
+    display: flex; /* Transforma em flex container para alinhar img e texto */
+    flex-direction: column; /* Organiza img e texto em coluna */
+    align-items: flex-start; /* Alinha o conteúdo da logo (img e texto) à esquerda*/
+    gap: 5px; /* Espaçamento entre a imagem e o texto */
+}
+
+.logo img {
+    width: 150px;
+    display: block; /* Garante que a imagem se comporte como um bloco */
+}
+
+.logo-text { /* Estilo para o texto "FUNCAP" */
+    color: var(--color-white);
+    font-size: 1em; /* Ajuste o tamanho da fonte se necessário */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0; /* Remove margem superior padrão que poderia existir */
+}
+
+.navbar .links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .links ul li a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+}
+
+.navbar .links ul li a:hover {
+    color: var(--color-white);
+    background-color: rgba(208, 123, 0, 0.5); /* Cor de hover com transparência */
+}
+
+/* Oculta o botão de menu em telas grandes */
+.menu-toggle {
+    display: none;
+}
+
+/* === Seção de introdução (H1 e Parágrafo) === */
+.context {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; REMOVIDO: será herdado do body ou definido em elementos específicos */
+    gap: 16px;
+    padding: 56px 6% 0; /* O padding horizontal é controlado pelo .content pai */
+    font-family: "Open Sans", sans-serif;
+    width: 100%;
+}
+
+.context h1 {
+    margin: 0; /* Remove margens padrão para não interferir no alinhamento */
+    font-size: 2.5em;
+    text-align: left; /* Alinhamento específico para o h1*/
+    color: var(--color-white);
+}
+
+.context p {
+    margin: 0; /* Remove margens padrão */
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.56;
+    letter-spacing: -0.54px;
+    text-align: left; /* Alinhamento específico para o parágrafo*/
+    color: var(--color-white);
+}
+
+/* === Container principal do conteúdo (Abaixo do cabeçalho) === */
+.container {
+  max-width: 1000px; /* Limita a largura máxima do conteúdo */
+  margin: 0 0; /* Centraliza o container na página */
+  padding: 40px 15%; /* Padding lateral consistente para todo o conteúdo */
+}
+
+/* Estilos para títulos e parágrafos dentro das seções */
+section h3 {
+  color: #009e4f; /* Cor específica */
+  margin-bottom: 10px;
+  text-align: left; /* Alinhamento esquerdo consistente*/
+  font-family: "Open Sans", sans-serif;
+}
+
+section p {
+  margin-bottom: 30px;
+  text-align: left; /* Alinhamento esquerdo consistente*/
+  font-family: "Open Sans", sans-serif;
+}
+
+.team-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.team-section .text {
+  flex: 1;
+}
+
+.team-section .image {
+  flex: 1;
+  min-height: 150px;
+  background: #ddd;
+  border-radius: 10px;
+}
+
+/* FOOTER - NENHUMA ALTERAÇÃO SOLICITADA */
+footer {
+    position: relative;
+    width: 100%;
+    height: 215px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+footer svg, footer img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+.footer-content { /* Assuming this class is used for footer text */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding: 0 10%; /* Consistent padding */
+}
+
+.footer-content p {
+    color: white;
+    margin: 0;
+    font-size: 0.9em;
+    text-align: left; /* Alinhamento esquerdo para o parágrafo do footer*/
+}
+
+
+/* === Responsividade (Mobile) === */
+@media (max-width: 768px) {
+  .nav {
+    height: auto;
+    overflow: visible;
+  }
+
+  .background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Em mobile, pode ficar atrás de tudo ou ser ajustado se necessário */
+  }
+
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%; /* Padding reduzido para mobile */
+    position: relative;
+  }
+
+  .logo {
+      flex-direction: column; /* Empilha logo e texto verticalmente */
+      align-items: flex-start; /* Alinha à esquerda no empilhamento*/
+      gap: 5px;
+  }
+
+  .logo img {
+    width: 120px; /* Logo menor em mobile */
+  }
+
+  .logo-text {
+      font-size: 0.9em; /* Texto da logo menor em mobile */
+  }
+
+  .menu-toggle {
+      display: block; /* Mostra o botão de menu em mobile */
+      position: absolute;
+      top: 20px;
+      right: 5%;
+      background: none;
+      border: none;
+      color: var(--color-text);
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 20;
+  }
+
+  .links {
+    display: none; /* Escondido por padrão em mobile, JS mostrará */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Abaixo do navbar */
+    left: 0;
+    width: 100%;
+    background-color: var(--funcap-primary-green-800);
+    padding: 10px 0;
+    z-index: 15;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .links.show {
+    display: flex; /* Exibe quando a classe 'show' é adicionada (via JS) */
+  }
+
+  .links ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .links ul li a {
+    padding: 10px 16px;
+    font-size: 14px;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+
+  .content {
+    padding: 40px 5%; /* Padding lateral reduzido para mobile */
+  }
+
+  .context {
+    padding: 50% 0 0; /* Padding superior para mobile, lateral 0 pois já está no .content */
+    /* text-align: left; REMOVIDO: será herdado do body ou definido em elementos específicos */
+    align-items: flex-start; /* Mantém alinhamento esquerdo*/
+  }
+
+  .context h1 {
+    font-size: 24px;
+    text-align: left;
+  }
+
+  .context p {
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .container {
+    padding: 20px 5%; /* Padding lateral reduzido para mobile */
+  }
+
+  section h3, section p {
+      text-align: left; /* Mantém alinhamento esquerdo em mobile*/
+  }
+
+  .team-section {
+    flex-direction: column;
+  }
+}

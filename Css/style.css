@@ -32,8 +32,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: auto;
-    height: auto;
+    width:100%;
+    height: 100%;
     z-index: -1;
     /* Fica atrás dos outros elementos */
 }
@@ -300,7 +300,8 @@
     min-height: 600px;
     border-bottom: 10px #2EAB52 solid;
     border-bottom-left-radius: 8px;
-
+    /* Adiciona padding interno à parte verde */
+    padding: 10px; /* Adiciona 10px de padding em todas as direções */
 }
 
 .data {
@@ -313,15 +314,15 @@
 
 /* Estilo do botão da diretoria */
 .diretoria {
-    width: 365px;
-    height: 64px;
+    width: 80%; /* Adjusted width to be a percentage of its parent */
+    height: 50px; /* Reduced height */
     background-color: #259447;
     border: none;
     color: white;
     font-family: "Open Sans", sans-serif;
-    font-size: 16px;
+    font-size: 14px; /* Reduced font size */
     border-radius: 8px;
-    margin: auto;
+    margin: 0 auto; /* Centered horizontally */
     padding: 3%;
     display: flex;
     align-items: center;
@@ -380,7 +381,7 @@
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
     list-style: none;
     max-width: 368px;
-    margin-left: 6.5%;
+    margin: 0 auto; /* Centraliza o submenu */
     border: 1px solid white;
     border-top: none;
     border-radius: 8px;
@@ -413,9 +414,10 @@
 }
 
 .sub-menu li button {
-    width: auto;
-    height: auto;
-    background-color: #259447;
+    max-width: 300px;
+    width: 300px;
+    height: 50px;
+    background-color: #259447  ;
     border: none;
     color: white;
     font-family: "Open Sans", sans-serif;
@@ -512,35 +514,49 @@
     display: flex;
     justify-content: space-between;
     font-size: 14px;
+    align-items: center; /* Centraliza verticalmente o texto e os botões */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha se necessário */
+}
+
+/* Reduzir o tamanho da fonte do nome do processo */
+.título-processo p {
+    font-size: 12px; /* Ajuste conforme necessário */
+    white-space: nowrap; /* Impede que o texto quebre linha */
+    overflow: hidden; /* Oculta o texto que excede a largura */
+    text-overflow: ellipsis; /* Adiciona reticências (...) para texto cortado */
+    max-width: 300px; /* Limita a largura do título do processo */
+    flex-shrink: 0; /* Impede que o item encolha */
 }
 
 .documentosPDF {
     font-size: 10px;
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: -1%;
+    justify-content: flex-end; /* Alinha os botões à direita */
+    gap: 5px; /* Reduz o espaço entre os botões */
+    margin-top: 0; /* Remove a margem superior */
+    flex-wrap: nowrap; /* Impede que os botões quebrem linha */
 }
 
 .documentosPDF button {
     height: auto;
     width: auto;
-    font-size: 11px;
+    font-size: 9px; /* Reduz o tamanho da fonte dos botões */
     display: flex;
-    justify-content: space-between;
+    align-items: center; /* Alinha o texto e o ícone verticalmente */
+    white-space: nowrap; /* Impede que o texto do botão quebre linha */
+    justify-content: center; /* Centraliza o conteúdo do botão */
     border-radius: 4px;
-    padding-top: 5px;
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 7px;
+    padding: 3px 5px; /* Ajusta o padding para diminuir o tamanho do botão */
     border: none;
     background-color: white;
     font-family: "Open Sans", sans-serif;
-    gap: 1fpx;
+    gap: 2px; /* Reduz o espaço entre o ícone e o texto do botão */
 }
 
-.título-processo {
-    color: #616161;
+.documentosPDF button svg {
+    width: 10px; /* Reduz o tamanho do ícone SVG */
+    height: 10px; /* Reduz o tamanho do ícone SVG */
+    flex-shrink: 0; /* Impede que o SVG encolha */
 }
 
 .documentosPDF button a {
@@ -560,9 +576,12 @@
     padding: 2.5%;
     margin-top: 3%;
     border: 1px #E6E6E6 solid;
-    height: 48px;
+    height: 48px; /* Ajuste a altura para acomodar uma única linha */
     width: 100%;
     border-radius: 8px;
+    display: flex; /* Garante que o conteúdo interno seja um flex container */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: space-between; /* Espaço entre o título e os botões */
 }
 
 .paginacao {
@@ -630,7 +649,7 @@
 }
 
 .processo.show, .Integridade.show, .Menu-dropdown.show, .secao_Integridade.show {
-    display:block; /* Mostra o elemento */
+    display:flex; /* Changed to flex to maintain the layout of its children */
     opacity: 1; /* Torna o elemento visível */
     transition: opacity 1s ease-in-out;
 }
@@ -652,38 +671,246 @@
     display: none;
    
 }
+footer {
+    width: 100%;
+    height: 100%; /* Ajuste a altura conforme necessário */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  footer svg, footer img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  .menu-toggle {
+    display: none;
+  }
+  /* === Responsividade === */
+  @media (max-width: 768px) {
 
-/*@media (max-width: 768px) {
+    .nav {
+      height: auto;
+      overflow: visible;
+    }
+  
+    .background-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+  
     .navbar {
-        flex-direction: column;
-        align-items: flex-start;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      position: relative;
     }
-
+  
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 5%;
+        background: none;
+        border: none;
+        color: var(--color-text);
+        font-size: 28px;
+        cursor: pointer;
+        z-index: 20;
+      }
+  
+    .logo img {
+      width: 120px;
+    }
+  
+    .links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #2FB454;
+      width: 100%;
+      padding: 10px 0;
+      z-index: 15;
+    }
+  
+    .links.show {
+      display: flex;
+    }
+  
     .links ul {
-        flex-direction: column;
-        gap: 10px;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
-
+  
+    .links ul li a {
+      padding: 10px 16px;
+      font-size: 14px;
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+  
+    .content {
+      padding: 60px 20px;
+    }
+  
     .context {
-        padding: 20px;
+      padding: 32px 20px 0;
+      text-align: center;
+      align-items: center;
     }
-
+  
+    .context h1 {
+      font-size: 24px;
+      text-align: center;
+    }
+  
+    .context p {
+      font-size: 16px;
+      text-align: center;
+    }
+  
     .blocos {
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
+      flex-direction: column;
+      height: auto;
+      padding: 20px;
+      gap: 16px;
     }
-
+  
+    .informacoes {
+      text-align: center;
+    }
+  
+    .informacoes h3 {
+      font-size: 32px;
+    }
+  
+    .informacoes p {
+      font-size: 16px;
+    }
+  
+    .menu {
+      padding: 20px;
+    }
+  
+    .bntSuperiorMenu {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .bntSuperiorMenu button {
+      width: 100%;
+      font-size: 16px;
+      padding: 12px;
+    }
+  
     .portifolio {
-        flex-direction: column;
+      flex-direction: column;
     }
-
+  
     .dropdown {
-        width: 100%;
+      min-width: 100%;
+      border-radius: 0;
+      border-bottom: none;
+      /* Ajusta o padding nas laterais para telas menores */
+      padding: 10px 5%; /* Mantém o padding vertical de 10px e adiciona 5% nas laterais */
+      box-sizing: border-box; /* Garante que o padding seja incluído na largura */
+    }
+  
+    .data {
+      margin-left: 0; /* Remove a margem esquerda para alinhar com o novo padding */
+      font-size: 14px;
+      text-align: center; /* Centraliza o texto da data */
+    }
+  
+    .diretoria {
+      width: 100%; /* Ajusta para preencher o novo padding do .dropdown */
+      font-size: 14px;
+      /* Remove o margin auto para evitar conflito com o padding do .dropdown */
+      margin: 0; /* Garante que não haja margens extras */
+    }
+  
+    .sub-menu {
+        margin: 0 auto; /* Centraliza o submenu */
+        width: 100%; /* Ajusta para preencher o novo padding do .dropdown */
+        max-width: 368px; /* Mantém o max-width se desejar */
+        box-sizing: border-box; /* Garante que o padding e a borda sejam incluídos na largura */
+        padding: 5px; /* Adiciona um pequeno padding interno */
     }
 
-    .portifolio_parte_branca {
-        width: 100%;
-        height: auto;
+    .sub-menu li button {
+      font-size: 14px;
+      padding: 4%;
     }
-}
+  
+    .portifolio_parte_branca {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+  
+    .texto-cinza-superior {
+      font-size: 18px;
+    }
+  
+    .texto-verde-superior {
+      font-size: 18px;
+    }
+  
+    .nucleo {
+      font-size: 16px;
+    }
+
+    /* Modificações para os documentos em telas menores */
+    .portifolio_docs-gead {
+        height: auto; /* Permite que a altura se ajuste ao conteúdo */
+        flex-direction: column; /* Coloca o título e os botões em colunas */
+        align-items: flex-start; /* Alinha os itens ao início da coluna */
+        gap: 5px; /* Espaço entre o título e os botões */
+    }
+
+    .documentos {
+        flex-direction: column; /* Organiza título e botões em coluna */
+        align-items: flex-start; /* Alinha o título à esquerda */
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    .título-processo {
+        width: 100%; /* Garante que o título ocupe a largura total */
+    }
+
+    .título-processo p {
+        font-size: 11px; /* Diminui a fonte para caber mais facilmente */
+        white-space: normal; /* Permite que o texto quebre linha se necessário */
+        text-overflow: unset; /* Remove as reticências */
+        overflow: visible; /* Torna o texto visível */
+        max-width: none; /* Remove a limitação de largura */
+    }
+
+    .documentosPDF {
+        justify-content: flex-start; /* Alinha os botões à esquerda */
+        width: 100%; /* Ocupa a largura total */
+        flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
+        margin-top: 5px; /* Adiciona um pouco de espaço acima dos botões */
+    }
+
+    .documentosPDF button {
+        font-size: 9px; /* Mantém a fonte pequena para os botões */
+        padding: 3px 5px; /* Ajusta o padding para diminuir o tamanho dos botões */
+        flex-shrink: 1; /* Permite que o botão encolha se necessário */
+    }
+  }
+
+  /* Esconde o botão em telas maiores */
