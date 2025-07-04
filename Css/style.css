@@ -165,7 +165,7 @@
     /* Espaçamento interno */
 }
 
-.Integridade {
+.Integridade-texto {
     padding: 48px 139px 0;
     /* Espaçamento interno */
 }
@@ -179,6 +179,7 @@
     letter-spacing: -1.44px;
     color: var(--color-white);
 }
+
 
 .informacoes p {
     font-size: 20px;
@@ -221,21 +222,21 @@
 }
 
 /* === Texto do processo === */
-.integridade {
+.integridade-texto {
     font-family: Inter;
     font-style: normal;
     line-height: 155.99%;
     /* 37.438px */
 }
 
-.Integridade h2 {
+.Integridade-texto h2 {
     color: #259447;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.72px;
 }
 
-.Integridade p {
+.Integridade-texto p {
     color: var(--FUNCAP-Secundria-cinza-white-900, #616161);
     font-size: 18px;
     font-weight: 400;
@@ -287,6 +288,12 @@
 .portifolio {
     display: flex;
     width: auto;
+}
+.documentos-etica{
+ display: flex;
+ justify-content: space-between;
+ gap: 250%;
+
 }
 
 .dropdown {
@@ -536,6 +543,34 @@
     margin-top: 0; /* Remove a margem superior */
     flex-wrap: nowrap; /* Impede que os botões quebrem linha */
 }
+.documentosPDF-etica{
+    font-size: 10px;
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões à direita */
+    gap: 5px; /* Reduz o espaço entre os botões */
+    margin-top: 0; /* Remove a margem superior */
+    flex-wrap: nowrap; /* Impede que os botões quebrem linha */
+}
+.documentosPDF-etica button {
+    height: auto;
+    width: auto;
+    font-size: 9px; /* Reduz o tamanho da fonte dos botões */
+    display: flex;
+    align-items: center; /* Alinha o texto e o ícone verticalmente */
+    white-space: nowrap; /* Impede que o texto do botão quebre linha */
+    justify-content: center; /* Centraliza o conteúdo do botão */
+    border-radius: 4px;
+    padding: 3px 5px; /* Ajusta o padding para diminuir o tamanho do botão */
+    border: none;
+    background-color: white;
+    font-family: "Open Sans", sans-serif;
+    gap: 2px; /* Reduz o espaço entre o ícone e o texto do botão */
+}
+.documentosPDF-etica button svg {
+    width: 20px; /* Reduz o tamanho do ícone SVG */
+    height: 20px; /* Reduz o tamanho do ícone SVG */
+    flex-shrink: 0; /* Impede que o SVG encolha */
+}
 
 .documentosPDF button {
     height: auto;
@@ -551,6 +586,17 @@
     background-color: white;
     font-family: "Open Sans", sans-serif;
     gap: 2px; /* Reduz o espaço entre o ícone e o texto do botão */
+}
+.documentosPDF-etica button a {
+    text-decoration: none;
+    color: #7F7F7F;
+}
+.documentosPDF-etica button:hover {
+    background-color: #dfdfdf;
+}
+
+.documentosPDF-etica button a:hover {
+    color: #2EAB52;
 }
 
 .documentosPDF button svg {
@@ -641,14 +687,14 @@
 
 
 /* Estilos para as seções */
-.processo, .Integridade, .Menu-dropdown, .secao_Integridade {
+.processo, .Integridade-texto, .Menu-dropdown, .secao_Integridade {
     display: none; /* Inicialmente oculto */
     opacity: 0; /* Inicialmente transparente */
     transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
    
 }
 
-.processo.show, .Integridade.show, .Menu-dropdown.show, .secao_Integridade.show {
+.processo.show, .Integridade-texto.show, .Menu-dropdown.show, .secao_Integridade.show {
     display:flex; /* Changed to flex to maintain the layout of its children */
     opacity: 1; /* Torna o elemento visível */
     transition: opacity 1s ease-in-out;
@@ -689,6 +735,11 @@ footer {
   .menu-toggle {
     display: none;
   }
+  .sub-menu button.selected {
+  background-color: #167232 !important;
+  font-weight: bold;
+  box-shadow: 0 0 0 1px #ffffff inset;
+}
   /* === Responsividade === */
   @media (max-width: 768px) {
 
@@ -696,6 +747,11 @@ footer {
       height: auto;
       overflow: visible;
     }
+    .documentos-etica{
+ display: flex;
+ flex-direction: column;
+
+}
   
     .background-wrapper {
       position: absolute;

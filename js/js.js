@@ -155,19 +155,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Evento do sub-menu
 
+//Evento do sub-menu
+
 document.addEventListener("DOMContentLoaded", function () {
     // Seleciona todos os botões de diretoria
     const diretorias = document.querySelectorAll(".diretoria");
 
     diretorias.forEach((diretoria) => {
         diretoria.addEventListener("click", function () {
-            const subMenu = this.nextElementSibling; // Pega o submenu associado
+            const subMenu = this.nextElementSibling;
             
-            // Alterna a altura máxima para expandir/recolher suavemente
             if (subMenu.style.maxHeight && subMenu.style.maxHeight !== "0px") {
                 subMenu.style.maxHeight = "0";
                 subMenu.style.opacity = "0";
-                setTimeout(() => (subMenu.style.display = "none"), 500); // Aguarda a transição
+                setTimeout(() => (subMenu.style.display = "none"), 500);
             } else {
                 subMenu.style.display = "block";
                 setTimeout(() => {
@@ -178,15 +179,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Seleciona todos os botões do submenu
+    // ⛳️ SUBSTITUA este trecho inteiro abaixo ⬇️ pelo novo com .selected
     const subMenuButtons = document.querySelectorAll(".sub-menu button");
 
     subMenuButtons.forEach((button) => {
         button.addEventListener("click", function () {
-            const sectionName = this.textContent.trim().replace(/\s+/g, ''); // Remove espaços
+            const sectionName = this.textContent.trim().replace(/\s+/g, '');
             const targetSection = document.querySelector(`.${sectionName}`);
 
-            // Esconde todas as seções antes de mostrar a correta
+            // ✅ ADICIONA AQUI A CLASSE selected
+            subMenuButtons.forEach(btn => btn.classList.remove('selected'));
+            this.classList.add('selected');
+
+            // Esconde todas as seções
             document.querySelectorAll(".conteudo").forEach((section) => {
                 section.style.display = "none";
             });
@@ -199,15 +204,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.querySelector(".menu-toggle");
-    const links = document.querySelector(".links");
-  
-    if (toggle && links) {
-      toggle.addEventListener("click", () => {
-        links.classList.toggle("show");
-      });
-    }
-  });
-  
+  ////////////////////////////////////////////////////////////////////////////////////////////
   
