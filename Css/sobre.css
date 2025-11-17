@@ -21,10 +21,8 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif; /* Consistente com a importação */
-  line-height: 1.6;
+  font-family: "Open Sans", sans-serif;
   color: #333;
-  text-align: left; /* Garante que todos os textos se alinhem à esquerda por padrão*/
 }
 
 .nav {
@@ -66,7 +64,6 @@ body {
 .logo {
     display: flex; /* Transforma em flex container para alinhar img e texto */
     flex-direction: column; /* Organiza img e texto em coluna */
-    align-items: flex-start; /* Alinha o conteúdo da logo (img e texto) à esquerda*/
     gap: 5px; /* Espaçamento entre a imagem e o texto */
 }
 
@@ -93,7 +90,7 @@ body {
 .navbar .links ul li a {
     color: var(--color-text);
     text-decoration: none;
-    font-weight: bold;
+
     padding: 5px 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 5px;
@@ -160,19 +157,14 @@ section p {
 
 .team-section {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   align-items: center;
-}
-
-.team-section .text {
-  flex: 1;
+  flex-direction: row;
 }
 
 .team-section .image {
-  flex: 1;
   min-height: 150px;
-  background: #ddd;
+  background: #ffffff;
   border-radius: 10px;
 }
 
@@ -329,6 +321,5 @@ footer svg, footer img {
   }
 
   .team-section {
-    flex-direction: column;
   }
 }

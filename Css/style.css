@@ -32,9 +32,19 @@
     position: absolute;
     top: 0;
     left: 0;
-    width:100%;
-    height: 100%;
+    height: auto;
     z-index: -1;
+    width: 100%;
+    
+    /* 2. A altura será calculada automaticamente 
+        pelo navegador, usando a proporção do 'viewBox' 
+    */
+    height: auto;
+    
+    /* 3. Garante que ele se alinhe corretamente 
+        (remove espaços em branco) 
+    */
+    display: block;
     /* Fica atrás dos outros elementos */
 }
 
@@ -329,7 +339,7 @@
     font-family: "Open Sans", sans-serif;
     font-size: 14px; /* Reduced font size */
     border-radius: 8px;
-    margin: 0 auto; /* Centered horizontally */
+    margin: auto; /* Centered horizontally */
     padding: 3%;
     display: flex;
     align-items: center;
@@ -387,20 +397,22 @@
     max-height: 0; /* Mantém a altura inicial como 0 */
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
     list-style: none;
-    max-width: 368px;
-    margin: 0 auto; /* Centraliza o submenu */
+    max-width: 100%;
+    width: auto;
     border: 1px solid white;
     border-top: none;
     border-radius: 8px;
+    align-items: center;
     padding: 0;
     opacity: 0;
-    display: none; /* Inicia invisível */
+    display: block; /* Inicia invisível */
 }
     /* Inicialmente invisível */
 
 /* Quando o submenu for visível */
 .sub-menu.show {
     max-height: 1400px;
+    width: auto;
     /* Definimos uma altura máxima para quando o submenu for visível */
     opacity: 1;
     /* Torna o submenu visível */
@@ -417,19 +429,22 @@
 .sub-menu li {
     padding: 2%;
     display: flex;
+    margin-right: auto;
     flex-direction: column;
+    align-items: center;
+    width: auto;
 }
 
 .sub-menu li button {
-    max-width: 300px;
-    width: 300px;
-    height: 50px;
+    min-width: 80%;
+    width: 100px;
+    height: auto;
     background-color: #259447  ;
     border: none;
     color: white;
     font-family: "Open Sans", sans-serif;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     padding: 5%;
@@ -622,7 +637,8 @@
     padding: 2.5%;
     margin-top: 3%;
     border: 1px #E6E6E6 solid;
-    height: 48px; /* Ajuste a altura para acomodar uma única linha */
+    min-height: 48px; /* Ajuste a altura para acomodar uma única linha */
+    height: auto;
     width: 100%;
     border-radius: 8px;
     display: flex; /* Garante que o conteúdo interno seja um flex container */
@@ -632,12 +648,13 @@
 
 .paginacao {
     display: flex;
-    margin: 3% 0 0 78%;
+    margin: 3% 0 0 78%; /* Alinhamento original que pode quebrar */
+    justify-content: center; /* Centraliza */
 }
 
 .paginacao button {
     width: auto;
-    padding: 25%;
+    padding: 8px 12px; /* Padding mais razoável */
     border-radius: 5px;
     border: 1px #E6E6E6 solid;
     background-color: white;
@@ -687,21 +704,21 @@
 
 
 /* Estilos para as seções */
-.processo, .Integridade-texto, .Menu-dropdown, .secao_Integridade {
+.processo, .Integridade-texto, .Menu-dropdown, .secao_Integridade, .Menu-dropdown-integridade {
     display: none; /* Inicialmente oculto */
     opacity: 0; /* Inicialmente transparente */
     transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
    
 }
 
-.processo.show, .Integridade-texto.show, .Menu-dropdown.show, .secao_Integridade.show {
+.processo.show, .Integridade-texto.show, .Menu-dropdown.show, .secao_Integridade.show, .Menu-dropdown-integridade {
     display:flex; /* Changed to flex to maintain the layout of its children */
     opacity: 1; /* Torna o elemento visível */
     transition: opacity 1s ease-in-out;
 }
 
 /* Inicialmente, a seção "Processos" e o Menu-dropdown estão visíveis */
-.processo, .Menu-dropdown {
+.processo, .Menu-dropdown, .Menu-dropdown-integridade {
     display: flex;
     opacity: 1;
     visibility: visible;
@@ -740,25 +757,88 @@ footer {
   font-weight: bold;
   box-shadow: 0 0 0 1px #ffffff inset;
 }
-  /* === Responsividade === */
-  @media (max-width: 768px) {
+.Menu-dropdown-integridade {
+    display: flex;
+    width: auto;
+}
+
+.Menu-dropdown-integridade .portifolio {
+    display: flex;
+    width: auto;
+}
+
+.Menu-dropdown-integridade .dropdown {
+    background-color:'#2EAB52';
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    min-width: 425px;
+    gap: 16px;
+    height: auto;
+    min-height: 600px;
+    border-bottom: 10px #484e4aff solid;
+    border-bottom-left-radius: 8px;
+    padding: 10px;
+}
+  
+/* --- ESTILOS PARA O NOVO MENU DE INTEGRIDADE ('Ética', 'Governança'...) --- */
+.integridade-tab {
+  width: 80%;
+  height: 50px;
+  background-color: #259447; /* Cor verde do .diretoria */
+  border: none;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  margin: auto; /* Centraliza o botão de 80% */
+  padding: 3%;
+  display: flex;
+  align-items: center; /* Alinha o texto verticalmente */
+  cursor: pointer;
+  transition: border 0.3s ease, background-color 0.3s ease; /* Adicionada transição do background */
+}
+
+/* Efeito hover (copiado de .diretoria:hover) */
+.integridade-tab:hover {
+  background-color: #167232; /* Cor verde mais escura */
+}
+
+/* Botão ATIVO/SELECIONADO (copiado de .diretoria.borda-branca) */
+.integridade-tab.selected {
+  background-color: #167232; /* Cor verde mais escura */
+  border: 1px solid white;   /* Borda branca, como no menu 'Processos' */
+}
+
+
+/* ###################################################### */
+/* ### INÍCIO DA SEÇÃO DE RESPONSIVIDADE PARA CELULAR ### */
+/* ###################################################### */
+
+@media (max-width: 768px) {
+    /* Ajusta paddings principais para telas menores */
+    .context,
+    .processo,
+    .Integridade-texto,
+    .menu {
+        padding: 32px 20px; /* Reduz o padding lateral */
+    }
 
     .nav {
       height: auto;
       overflow: visible;
     }
     .documentos-etica{
- display: flex;
- flex-direction: column;
-
-}
+     display: flex;
+     flex-direction: column;
+    }
   
     .background-wrapper {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 1204px;
+      height: 1200px;
       z-index: -1;
     }
   
@@ -770,6 +850,7 @@ footer {
       position: relative;
     }
   
+    /* Mostra o botão de menu hamburguer */
     .menu-toggle {
         display: block;
         position: absolute;
@@ -787,6 +868,7 @@ footer {
       width: 120px;
     }
   
+    /* Esconde o menu de links principal (JS vai mostrar) */
     .links {
       display: none;
       flex-direction: column;
@@ -812,7 +894,7 @@ footer {
     .links ul li a {
       padding: 10px 16px;
       font-size: 14px;
-      width: 100%;
+      width: auto;
       display: block;
       text-align: center;
     }
@@ -821,14 +903,14 @@ footer {
       padding: 60px 20px;
     }
   
+    /* Centraliza e diminui textos do cabeçalho */
     .context {
-      padding: 32px 20px 0;
       text-align: center;
       align-items: center;
     }
   
     .context h1 {
-      font-size: 24px;
+      font-size: 14px;
       text-align: center;
     }
   
@@ -837,11 +919,14 @@ footer {
       text-align: center;
     }
   
+    /* --- AQUI ESTÁ A CORREÇÃO ---
+      Empilha os blocos verdes 
+    */
     .blocos {
       flex-direction: column;
       height: auto;
       padding: 20px;
-      gap: 16px;
+      gap: 5px;
     }
   
     .informacoes {
@@ -849,17 +934,14 @@ footer {
     }
   
     .informacoes h3 {
-      font-size: 32px;
+      font-size: px;
     }
   
     .informacoes p {
       font-size: 16px;
     }
   
-    .menu {
-      padding: 20px;
-    }
-  
+    /* Empilha os botões de aba (Processos / Integridade) */
     .bntSuperiorMenu {
       flex-direction: column;
       gap: 10px;
@@ -867,58 +949,68 @@ footer {
   
     .bntSuperiorMenu button {
       width: 100%;
-      font-size: 16px;
+      font-size: 12px;
       padding: 12px;
+      border-radius: 8px !important; /* Força o raio em todos os cantos */
     }
   
+    /* Faz o portfólio (menu + conteúdo) empilhar */
     .portifolio {
       flex-direction: column;
     }
   
+    /* Menu lateral (dropdown) ocupa 100% da largura */
     .dropdown {
-      min-width: 100%;
+      width: 100%;
+      min-width: 100%; /* Garante 100% */
       border-radius: 0;
       border-bottom: none;
-      /* Ajusta o padding nas laterais para telas menores */
-      padding: 10px 5%; /* Mantém o padding vertical de 10px e adiciona 5% nas laterais */
-      box-sizing: border-box; /* Garante que o padding seja incluído na largura */
+      padding: 5px 5%;
+      box-sizing: border-box;
+      min-height: auto; /* Altura automática */
     }
   
     .data {
-      margin-left: 0; /* Remove a margem esquerda para alinhar com o novo padding */
-      font-size: 14px;
-      text-align: center; /* Centraliza o texto da data */
+      margin-left: 0;
+      font-size: 12px;
+      text-align: center;
     }
   
-    .diretoria {
-      width: 100%; /* Ajusta para preencher o novo padding do .dropdown */
+    /* Botões de diretoria e integridade ocupam 100% */
+    .diretoria,
+    .integridade-tab {
+      width: 100%;
       font-size: 14px;
-      /* Remove o margin auto para evitar conflito com o padding do .dropdown */
-      margin: 0; /* Garante que não haja margens extras */
+      margin: 0; /* Remove margem 'auto' */
     }
   
     .sub-menu {
-        margin: 0 auto; /* Centraliza o submenu */
-        width: 100%; /* Ajusta para preencher o novo padding do .dropdown */
-        max-width: 368px; /* Mantém o max-width se desejar */
-        box-sizing: border-box; /* Garante que o padding e a borda sejam incluídos na largura */
-        padding: 5px; /* Adiciona um pequeno padding interno */
+        margin: 0 auto;
+        width: auto;
+        max-width: 100%; /* Garante 100% */
+        box-sizing: border-box;
+        padding: 5px;
     }
 
     .sub-menu li button {
-      font-size: 14px;
-      padding: 4%;
+      font-size: 14px; /* Aumentado de 12px para legibilidade */
+      padding: 2%;
     }
   
-    .portifolio_parte_branca {
-      width: 100%;
+    /* Parte branca (conteúdo) ocupa 100% da largura */
+    .portifolio_parte_branca,
+    .secao_Integridade {
+      width: auto;
       max-width: 100%;
-      height: auto;
+      height: auto; /* Altura automática */
+      min-height: 100px;
       border-radius: 0;
+      border: 1px #3FB383 solid;
     }
   
+    /* Reduz fontes da parte branca */
     .texto-cinza-superior {
-      font-size: 18px;
+      font-size: 14px;
     }
   
     .texto-verde-superior {
@@ -926,47 +1018,187 @@ footer {
     }
   
     .nucleo {
-      font-size: 16px;
+      font-size: 20px;
     }
 
-    /* Modificações para os documentos em telas menores */
+    /* Ajustes nos documentos (lista de processos) */
     .portifolio_docs-gead {
-        height: auto; /* Permite que a altura se ajuste ao conteúdo */
-        flex-direction: column; /* Coloca o título e os botões em colunas */
-        align-items: flex-start; /* Alinha os itens ao início da coluna */
-        gap: 5px; /* Espaço entre o título e os botões */
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
     }
 
     .documentos {
-        flex-direction: column; /* Organiza título e botões em coluna */
-        align-items: flex-start; /* Alinha o título à esquerda */
-        width: 100%; /* Ocupa a largura total */
+        flex-direction: column;
+        align-items: flex-start;
+        width: auto;
+        gap: 5px;
     }
 
     .título-processo {
-        width: 100%; /* Garante que o título ocupe a largura total */
+        width: 100%;
     }
 
+    /* MELHORIA DE ACESSIBILIDADE: Fontes aumentadas */
     .título-processo p {
-        font-size: 11px; /* Diminui a fonte para caber mais facilmente */
-        white-space: normal; /* Permite que o texto quebre linha se necessário */
-        text-overflow: unset; /* Remove as reticências */
-        overflow: visible; /* Torna o texto visível */
-        max-width: none; /* Remove a limitação de largura */
+        font-size: 14px; /* Aumentado de 11px - MAIS LEGÍVEL */
+        white-space: normal; /* Permite quebra de linha */
+        text-overflow: unset;
+        overflow: visible;
+        max-width: 100%;
+    }
+
+    .documentosPDF,
+    .documentosPDF-etica {
+        justify-content: flex-start;
+        width: auto;
+        flex-wrap: wrap;
+        margin-top: 5px;
+    }
+
+    /* MELHORIA DE ACESSIBILIDADE: Fontes aumentadas */
+    .documentosPDF button,
+    .documentosPDF-etica button {
+        font-size: 12px; /* Aumentado de 9px - MAIS LEGÍVEL */
+        padding: 5px 8px;
+        flex-shrink: 1;
+    }
+
+    /* Centraliza a paginação */
+    .paginacao {
+        margin: 20px 0;
+    }
+}
+/* ================================================================= */
+/*  RESPONSIVIDADE PARA TELAS ABAIXO DE 900px  */
+/* ================================================================= */
+
+@media screen and (max-width: 900px) {
+    
+    /* Faz o menu e o conteúdo ficarem EMPILHADOS */
+    .portifolio,
+    .Global_Menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Menu verde ocupa 100% da largura */
+    .dropdown {
+        height: 100%;
+        width: 100%;
+    }
+
+    /* Parte branca também ocupa 100% */
+    .conteudo,
+    .portifolio_parte_branca {
+        width: 100%;
+        height: 100%;
+        margin-left: 0;
+    }
+
+    /* Ajusta o padding gigante que quebra tudo */
+    .menu {
+        padding: 5px;
+    }
+
+    /* Ajusta a barra superior */
+    .bntSuperiorMenu {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    /* Botões ocupam 100% da largura */
+    .bntSuperiorMenu button {
+        width: 100%;
+    }
+
+    /* Blocos de documentos — evitar overflow */
+    .documentos {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .documentosPDF {
-        justify-content: flex-start; /* Alinha os botões à esquerda */
-        width: 100%; /* Ocupa a largura total */
-        flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
-        margin-top: 5px; /* Adiciona um pouco de espaço acima dos botões */
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+@media screen and (max-width: 480px) {
+
+    .diretoria {
+        width: 100%;
+    }
+    .portifolio_parte_branca{
+        height: 100%;
     }
 
-    .documentosPDF button {
-        font-size: 9px; /* Mantém a fonte pequena para os botões */
-        padding: 3px 5px; /* Ajusta o padding para diminuir o tamanho dos botões */
-        flex-shrink: 1; /* Permite que o botão encolha se necessário */
+    .sub-menu li button {
+        width: 100%;
     }
-  }
 
-  /* Esconde o botão em telas maiores */
+    .texto-verde-superior p {
+        font-size: 14px;
+    }
+
+    .pesquisa input {
+        width: 100%;
+    }
+/* Título do processo */
+.título-processo p {
+    font-size: 10px !important;
+    max-width: 220px;  /* reduz largura para caber */
+}
+
+/* Texto “Processo BPMN / Fluxo Lúdico / Manual” */
+.documentos {
+    font-size: 8px !important;
+    gap: 1px !important;
+}
+
+/* Área dos botões (PDF / Manual) */
+.documentosPDF,
+.documentosPDF-etica {
+    gap: 1px !important;
+}
+
+/* Botões PDF / Manual */
+.documentosPDF button,
+.documentosPDF-etica button {
+    font-size: 9px !important;
+    padding: 1px 2px !important;
+    border-radius: 4px !important;
+}
+
+/* Ícones dentro dos botões */
+.documentosPDF button svg,
+.documentosPDF-etica button svg {
+    width: 7px !important;
+    height: 7px !important;
+}
+
+/* Espaçamento dos cards */
+.portifolio_docs-gead {
+    padding: 2px !important;
+    gap: 2px !important;
+}
+
+/* Texto cinza superior */
+.texto-cinza-superior {
+    font-size: 10px !important;
+}
+
+/* Texto verde (nome da diretoria / núcleo) */
+.texto-verde-superior {
+    font-size: 10px !important;
+}
+
+.nucleo {
+    font-size: 10px !important;
+}
+
+}
+
+    /* ============================= */
+/*  DIMINUI TAMANHO DA PARTE BRANCA  */
+/* ============================= */

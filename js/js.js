@@ -1,208 +1,267 @@
-// Seleciona todos os botões com a classe 'diretoria'
-const diretoriaButtons = document.querySelectorAll('.diretoria');
+// Espera todo o conteúdo da página carregar ANTES de executar qualquer script
+document.addEventListener('DOMContentLoaded', function() {
 
-// Loop para adicionar o evento de clique em cada botão
-diretoriaButtons.forEach(button => {
-    const submenu = button.nextElementSibling; // Seleciona o próximo elemento (submenu) relacionado ao botão
-
-    button.addEventListener('click', function () {
-        // Alterna a classe "show" no submenu para o efeito de deslizamento
-        submenu.classList.toggle('show');
-
-        // Alterna a classe "borda-branca" ao clicar no botão
-        button.classList.toggle('borda-branca');
-
-        // Alterna a visibilidade dos SVGs
-        button.classList.toggle('show'); // Isso vai alternar entre os SVGs
+    // --- 1. LÓGICA DO MENU SANFONA (PROCESSOS: DIRETORIAS) ---
+    const diretoriaButtons = document.querySelectorAll('.diretoria');
+    diretoriaButtons.forEach(button => {
+        const submenu = button.nextElementSibling;
+        button.addEventListener('click', function () {
+            submenu.classList.toggle('show');
+            button.classList.toggle('borda-branca');
+            button.classList.toggle('show');
+        });
     });
-});
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Evento de mostra seção 
+    // --- 2. LÓGICA DAS ABAS PRINCIPAIS (PROCESSOS vs INTEGRIDADE) ---
+    // (Esta é a seção corrigida)
+    const btnProcesso = document.querySelector('.bntProcessos');
+    const btnIntegridade = document.querySelector('.bntIntegridade');
 
-// Seleciona os botões de cada seção
-const btnProcesso = document.querySelector('.bntProcessos');
-const btnIntegridade = document.querySelector('.bntIntegridade');
+    // Seleciona os containers de TEXTO
+    const secaoProcessoTexto = document.querySelector('.processo');
+    const secaoIntegridadeTexto = document.querySelector('.Integridade-texto');
 
-// Seleciona as seções
-const secaoProcesso = document.querySelector('.processo');
-const secaoIntegridade = document.querySelector('.Integridade');
+    // Seleciona os containers de CONTEÚDO (Menu + Parte Branca)
+    const containerProcessos = document.querySelector('.Menu-dropdown');
+    const containerMenuIntegridade = document.querySelector('.Menu-dropdown-integridade');
+    const containerConteudoIntegridade = document.querySelector('.secao_Integridade');
 
-// Seleciona o Menu-dropdown e a nova seção
-const menuDropdown = document.querySelector('.Menu-dropdown');
-const secao_Integridade = document.querySelector('.secao_Integridade');
+    // **NOVO**: Seleciona o container PAI de tudo
+    const menuContainer = document.querySelector('.menu');
 
-// Função para mostrar uma seção
-function mostrarSecao(secao) {
-    secao.style.display = 'flex'; // Mostra a seção
-    setTimeout(() => {
-        secao.style.opacity = '1'; // Torna a seção visível com transição
+    // Funções de fade (sua lógica original)
+    function mostrarSecao(secao) {
+        if (!secao) return; // Proteção contra elemento não encontrado
         secao.style.display = 'flex';
-    }, 10);
-}
+        setTimeout(() => {
+            secao.style.opacity = '1';
+        }, 10);
+    }
 
-// Função para esconder uma seção
-function esconderSecao(secao) {
-    secao.style.opacity = '0'; // Torna a seção transparente
-    setTimeout(() => {
-        secao.style.display = 'none'; // Oculta a seção após a transição
-    }, 300); // Tempo correspondente à duração da transição
-}
+    function esconderSecao(secao) {
+        if (!secao) return; // Proteção
+        secao.style.opacity = '0';
+        setTimeout(() => {
+            secao.style.display = 'none';
+        }, 300);
+    }
 
-// Inicialmente, mostra a seção "Processos" e o Menu-dropdown
-mostrarSecao(secaoProcesso); // Mostra a seção "Processos"
-mostrarSecao(menuDropdown); // Mostra o Menu-dropdown
-esconderSecao(secaoIntegridade); // Esconde a seção "Integridade"
-esconderSecao(secao_Integridade); // Esconde a nova seção
+    // Inicialização (mostra Processos por padrão)
+    mostrarSecao(secaoProcessoTexto);
+    mostrarSecao(containerProcessos);
+    esconderSecao(secaoIntegridadeTexto);
+    esconderSecao(containerMenuIntegridade);
+    esconderSecao(containerConteudoIntegridade);
 
-// Evento de clique no botão "Processos"
-btnProcesso.addEventListener('click', function () {
-    esconderSecao(secaoIntegridade);  // Esconde a seção "Integridade"
-    esconderSecao(secao_Integridade); // Esconde a nova seção
-    mostrarSecao(secaoProcesso);  // Mostra a seção "Processos"
-    mostrarSecao(menuDropdown); // Mostra o Menu-dropdown
+    // Evento "Processos"
+    btnProcesso.addEventListener('click', function () {
+        esconderSecao(secaoIntegridadeTexto);
+        esconderSecao(containerMenuIntegridade);
+        esconderSecao(containerConteudoIntegridade);
+        
+        mostrarSecao(secaoProcessoTexto);
+        mostrarSecao(containerProcessos);
 
-    // Ajusta a aparência dos botões
-    btnProcesso.style.background = '#2EAB52';
-    btnProcesso.style.color = '#FDFDFD';
-    btnIntegridade.style.background = '#E6E6E6';
-    btnIntegridade.style.color = '#7F7F7F';
+        // **NOVO**: Remove a classe de layout especial
+        if (menuContainer) {
+            menuContainer.classList.remove('integridade-layout-ativo');
+        }
 
-    // Atualiza o texto dos botões
-    btnProcesso.textContent = 'Processos Mapeados';
-    btnIntegridade.textContent = 'Integridade';
-});
+        // Estilos dos botões
+        btnProcesso.style.background = '#2EAB52';
+        btnProcesso.style.color = '#FDFDFD';
+        btnIntegridade.style.background = '#E6E6E6';
+        btnIntegridade.style.color = '#7F7F7F';
+    });
 
-// Evento de clique no botão "Integridade"
-btnIntegridade.addEventListener('click', function () {
-    esconderSecao(secaoProcesso);  // Esconde a seção "Processos"
-    esconderSecao(menuDropdown); // Esconde o Menu-dropdown
-    mostrarSecao(secaoIntegridade);  // Mostra a seção "Integridade"
-    mostrarSecao(secao_Integridade); // Mostra a nova seção
+    // Evento "Integridade" (COM A CORREÇÃO)
+    btnIntegridade.addEventListener('click', function () {
+        esconderSecao(secaoProcessoTexto);
+        esconderSecao(containerProcessos);
+        
+        mostrarSecao(secaoIntegridadeTexto); // Mostra o texto
+        mostrarSecao(containerMenuIntegridade); // Mostra o menu verde
+        mostrarSecao(containerConteudoIntegridade); // Mostra a parte branca
 
-    // Ajusta a aparência dos botões
-    btnIntegridade.style.background = '#2EAB52';
-    btnIntegridade.style.color = '#FDFDFD';
-    btnProcesso.style.background = '#E6E6E6';
-    btnProcesso.style.color = '#7F7F7F';
+        // **NOVO**: Adiciona a classe especial para o CSS consertar o layout
+        if (menuContainer) {
+            menuContainer.classList.add('integridade-layout-ativo');
+        }
 
-    // Atualiza o texto dos botões
-    btnIntegridade.textContent = 'Integridade';
-    btnProcesso.textContent = 'Processos Mapeados';
-});
+        // Estilos dos botões
+        btnIntegridade.style.background = '#2EAB52';
+        btnIntegridade.style.color = '#FDFDFD';
+        btnProcesso.style.background = '#E6E6E6';
+        btnProcesso.style.color = '#7F7F7F';
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // --- INÍCIO DA FUNÇÃO: MOSTRAR "ÉTICA" AUTOMATICAMENTE ---
+        // (Baseado no seu código original)
+        
+        // 1. Esconde todos os conteúdos de integridade (parte branca)
+        if (containerConteudoIntegridade) {
+            containerConteudoIntegridade.querySelectorAll('.conteudo').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // 2. Mostra o conteúdo "Ética"
+            const conteudoEtica = containerConteudoIntegridade.querySelector('.Ética');
+            if (conteudoEtica) {
+                conteudoEtica.style.display = 'block';
+            }
+        }
 
-//Evento da pag
+        // 3. Reseta e seleciona o *botão* "Ética"
+        const integridadeTabButtons = document.querySelectorAll('.integridade-tab');
+        integridadeTabButtons.forEach(btn => {
+            if (btn.textContent.trim() === 'Ética') {
+                btn.classList.add('selected');
+            } else {
+                btn.classList.remove('selected');
+            }
+        });
+        // --- FIM DA FUNÇÃO ---
+    });
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Função para detectar a seção ativa
+
+    // --- 3. LÓGICA DE PAGINAÇÃO ---
+    // (Seu código original)
     function getActiveSection() {
         return document.querySelector('.conteudo[style*="display: block"]');
     }
-
-    // Função para exibir a página correta dentro da seção ativa
     function showPage(pageNumber, activeSection) {
         if (!activeSection) return;
-
-        const sectionName = activeSection.classList[0]; // Nome da classe da seção ativa
+        const sectionName = activeSection.classList[0];
         const pages = activeSection.querySelectorAll(`[class^="${sectionName}-pag-"]`);
-
-        // Esconde todas as páginas dentro da seção ativa
         pages.forEach(page => page.classList.remove('active'));
-
-        // Mostra a página correspondente
         const activePage = activeSection.querySelector(`.${sectionName}-pag-${pageNumber}`);
         if (activePage) {
             activePage.classList.add('active');
         }
     }
-
-    // Inicializa a página ao carregar
     document.querySelectorAll('.conteudo').forEach(section => {
-        showPage(1, section); // Sempre inicia na página 1
+        showPage(1, section);
     });
-
-    // Evento para os botões de paginação
     document.querySelectorAll('.paginacao').forEach(pagination => {
         pagination.addEventListener('click', function (event) {
             const button = event.target;
             const activeSection = getActiveSection();
             if (!activeSection) return;
-
             let currentPage = parseInt(activeSection.getAttribute("data-current-page")) || 1;
             let totalPages = activeSection.querySelectorAll(`[class^="${activeSection.classList[0]}-pag-"]`).length;
-
             if (button.classList.contains('page-number')) {
                 const page = parseInt(button.getAttribute('data-page'));
                 if (page >= 1 && page <= totalPages) {
-                    currentPage = page; // Atualiza a página ativa
+                    currentPage = page;
                 }
             } else if (button.classList.contains('next')) {
                 if (currentPage < totalPages) currentPage++;
             } else if (button.classList.contains('prev')) {
-                if (currentPage > 1) currentPage--;  // Corrigido para garantir que não vá abaixo de 1
+                if (currentPage > 1) currentPage--;
             }
-
             activeSection.setAttribute("data-current-page", currentPage);
             showPage(currentPage, activeSection);
         });
     });
-});
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//Evento do sub-menu
-
-//Evento do sub-menu
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Seleciona todos os botões de diretoria
-    const diretorias = document.querySelectorAll(".diretoria");
-
-    diretorias.forEach((diretoria) => {
-        diretoria.addEventListener("click", function () {
-            const subMenu = this.nextElementSibling;
-            
-            if (subMenu.style.maxHeight && subMenu.style.maxHeight !== "0px") {
-                subMenu.style.maxHeight = "0";
-                subMenu.style.opacity = "0";
-                setTimeout(() => (subMenu.style.display = "none"), 500);
-            } else {
-                subMenu.style.display = "block";
-                setTimeout(() => {
-                    subMenu.style.maxHeight = subMenu.scrollHeight + "px";
-                    subMenu.style.opacity = "1";
-                }, 10);
-            }
-        });
-    });
-
-    // ⛳️ SUBSTITUA este trecho inteiro abaixo ⬇️ pelo novo com .selected
+    // --- 4. LÓGICA DO SUB-MENU (PROCESSOS: GEAD, RH, etc.) ---
+    // (Seu código original)
     const subMenuButtons = document.querySelectorAll(".sub-menu button");
-
     subMenuButtons.forEach((button) => {
         button.addEventListener("click", function () {
             const sectionName = this.textContent.trim().replace(/\s+/g, '');
-            const targetSection = document.querySelector(`.${sectionName}`);
+            // CORREÇÃO: Procura a seção *apenas dentro* do menu de Processos
+            const targetSection = document.querySelector(`.Menu-dropdown .${sectionName}`);
 
-            // ✅ ADICIONA AQUI A CLASSE selected
             subMenuButtons.forEach(btn => btn.classList.remove('selected'));
             this.classList.add('selected');
 
-            // Esconde todas as seções
-            document.querySelectorAll(".conteudo").forEach((section) => {
+            // CORREÇÃO: Esconde *apenas* os conteúdos de Processos
+            document.querySelectorAll(".Menu-dropdown .conteudo").forEach((section) => {
                 section.style.display = "none";
             });
 
-            // Exibe apenas a seção correspondente
             if (targetSection) {
                 targetSection.style.display = "block";
             }
         });
     });
-});
 
-  ////////////////////////////////////////////////////////////////////////////////////////////
-  
+    // --- 5. LÓGICA DE PESQUISA LOCAL ---
+    // (Seu código original)
+    const todosOsCamposDePesquisa = document.querySelectorAll('.pesquisa input[type="search"]');
+    function executarPesquisaLocal(termo) {
+        const termoPesquisado = termo.toLowerCase().trim();
+        const secaoAtiva = document.querySelector('.conteudo[style*="display: block"]');
+        if (!secaoAtiva) return;
+        const paginacaoDaSecao = secaoAtiva.querySelector('.paginacao');
+        const paginasDaSecao = secaoAtiva.querySelectorAll('[class*="-pag-"]');
+        const paginaAtivaOriginal = secaoAtiva.querySelector('[class*="-pag-"].active');
+        if (termoPesquisado.length === 0) {
+            if (paginacaoDaSecao) paginacaoDaSecao.style.display = 'block';
+            paginasDaSecao.forEach(pag => pag.style.display = 'none');
+            if (paginaAtivaOriginal) {
+                paginaAtivaOriginal.style.display = 'block';
+            } else if (paginasDaSecao.length > 0) {
+                paginasDaSecao[0].style.display = 'block';
+            }
+            secaoAtiva.querySelectorAll('.documentos').forEach(proc => proc.style.display = '');
+            return;
+        }
+        if (paginacaoDaSecao) paginacaoDaSecao.style.display = 'none';
+        paginasDaSecao.forEach(pagina => {
+            let paginaTemResultados = false;
+            const processosDaPagina = pagina.querySelectorAll('.documentos');
+            processosDaPagina.forEach(processo => {
+                const tituloElemento = processo.querySelector('.título-processo p');
+                if (tituloElemento) {
+                    const titulo = tituloElemento.textContent.toLowerCase();
+                    if (titulo.includes(termoPesquisado)) {
+                        processo.style.display = 'flex';
+                        paginaTemResultados = true;
+                    } else {
+                        processo.style.display = 'none';
+                    }
+                }
+            });
+            if (paginaTemResultados) {
+                pagina.style.display = 'block';
+            } else {
+                pagina.style.display = 'none';
+            }
+        });
+    }
+    todosOsCamposDePesquisa.forEach(input => {
+        input.addEventListener('input', function() {
+            const termoAtual = this.value;
+            todosOsCamposDePesquisa.forEach(outroInput => {
+                if (outroInput !== this) {
+                    outroInput.value = termoAtual;
+                }
+            });
+            executarPesquisaLocal(termoAtual);
+        });
+    });
+
+    // --- 6. LÓGICA DAS ABAS (INTEGRIDADE: ÉTICA, GOVERNANÇA, etc.) ---
+    // (Seu código original, que usa o texto do botão)
+    const integridadeTabButtons = document.querySelectorAll('.portifolio .dropdown .integridade-tab');
+    const integridadeContentContainer = document.querySelector('.secao_Integridade');
+    integridadeTabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const sectionName = this.textContent.trim().replace(/\s+/g, '');
+            const targetSection = integridadeContentContainer.querySelector(`.${sectionName}`);
+            integridadeTabButtons.forEach(btn => btn.classList.remove('selected'));
+            this.classList.add('selected');
+            const allContentBlocks = integridadeContentContainer.querySelectorAll('.conteudo');
+            allContentBlocks.forEach(block => {
+                block.style.display = 'none';
+            });
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            } else {
+                console.warn(`Conteúdo para "${sectionName}" não encontrado.`);
+            }
+        });
+    });
+
+}); // --- FIM DO 'DOMContentLoaded' ---
