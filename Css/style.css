@@ -34,7 +34,7 @@
     left: 0;
     height: auto;
     z-index: -1;
-    width: 100%;
+    width: auto;
     
     /* 2. A altura será calculada automaticamente 
         pelo navegador, usando a proporção do 'viewBox' 

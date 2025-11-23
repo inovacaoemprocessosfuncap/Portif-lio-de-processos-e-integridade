@@ -7,7 +7,6 @@
 }
 
 /* === Variáveis de Tema === */
-/* Definição de cores principais - Adicionadas para maior consistência */
 :root {
     --color-white: #FDFDFD;
     --color-hover: #D07B00;
@@ -18,6 +17,8 @@
     --funcap-secondary-gray-white-800: #7F7F7F;
     --funcap-primary-green-700: #259447;
     --funcap-primary-green-900: #124D25;
+    --color-green-title: #009e4f; /* Nova cor para títulos */
+    --color-gray-border: #E0E0E0; /* Nova cor para bordas suaves */
 }
 
 body {
@@ -29,6 +30,9 @@ body {
     position: relative;
     height: 400px;
     overflow: hidden;
+    /* Alinha o conteúdo (content) no centro da navegação */
+    display: flex;
+    justify-content: center; /* Centraliza o .content horizontalmente (opcional, mas bom para garantir) */
 }
 
 .background-wrapper {
@@ -37,16 +41,22 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Fica atrás do conteúdo principal */
+    z-index: 1; 
 }
 
 /* Container do conteúdo principal do cabeçalho */
 .content {
     position: relative;
-    z-index: 3; /* Acima do background SVG */
-    /* text-align: left; REMOVIDO: será herdado do body ou definido em elementos específicos */
+    z-index: 3; 
     color: var(--color-white);
-    padding: 50px 10%; /* Padding lateral consistente para alinhamento */
+    
+    /* REMOVIDO: padding: 50px 10%; 
+       O padding será aplicado dentro do .context para controlar a largura máxima */
+    padding: 50px 0; /* Apenas padding vertical para liberar a largura */
+
+    /* Garante que o conteúdo não ultrapasse o max-width do container principal (opcional, mas consistente) */
+    max-width: 1200px; /* Igual ao .container principal, para alinhamento */
+    width: 100%;
 }
 
 /* === Barra de Navegação === */
@@ -54,31 +64,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding: 0 10%;  Já está no .content, não precisa repetir aqui se o logo e links forem filhos diretos do .navbar */
     margin-bottom: 20px;
     padding-left: 90px;
     z-index: 3;
 }
 
-/* Ajustes para a logo e texto "FUNCAP" */
 .logo {
-    display: flex; /* Transforma em flex container para alinhar img e texto */
-    flex-direction: column; /* Organiza img e texto em coluna */
-    gap: 5px; /* Espaçamento entre a imagem e o texto */
+    display: flex;
+    flex-direction: column; 
+    gap: 5px; 
 }
 
 .logo img {
     width: 150px;
-    display: block; /* Garante que a imagem se comporte como um bloco */
+    display: block; 
 }
 
-.logo-text { /* Estilo para o texto "FUNCAP" */
+.logo-text { 
     color: var(--color-white);
-    font-size: 1em; /* Ajuste o tamanho da fonte se necessário */
+    font-size: 1em; 
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-top: 0; /* Remove margem superior padrão que poderia existir */
+    margin-top: 0; 
 }
 
 .navbar .links ul {
@@ -90,82 +98,156 @@ body {
 .navbar .links ul li a {
     color: var(--color-text);
     text-decoration: none;
-
     padding: 5px 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 5px;
+    
+    /* MODIFICADO: Remove o negrito */
+    font-weight: normal; 
+    
+    /* MODIFICADO: Altera para apenas a primeira letra de cada palavra em maiúsculo */
+    text-transform: capitalize; 
 }
-
 .navbar .links ul li a:hover {
     color: var(--color-white);
-    background-color: rgba(208, 123, 0, 0.5); /* Cor de hover com transparência */
+    background-color: rgba(208, 123, 0, 0.5); 
 }
 
-/* Oculta o botão de menu em telas grandes */
+/* NOVO: Estilo para o link 'Sobre' para simular que está selecionado (ativo) */
+.navbar .links ul li a[href="#sobre"] {
+    color: var(--color-white);
+    background-color: rgba(208, 123, 0, 0.5); /* Usa a mesma cor de fundo do hover */
+    /* Garante que o hover continue funcionando em cima deste link */
+    pointer-events: none; 
+}
+
 .menu-toggle {
     display: none;
 }
 
-/* === Seção de introdução (H1 e Parágrafo) === */
+/* === Seção de introdução (H1 e Parágrafo 'Sobre') === */
 .context {
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; REMOVIDO: será herdado do body ou definido em elementos específicos */
     gap: 16px;
-    padding: 56px 6% 0; /* O padding horizontal é controlado pelo .content pai */
+    
+    /* Aplica o espaçamento horizontal aqui para alinhamento visual */
+    padding: 56px 10%; /* 10% de padding nas laterais, como o novo .container */
+    
     font-family: "Open Sans", sans-serif;
     width: 100%;
+    
+    /* Garante que o texto comece sempre à esquerda dentro do container centralizado */
+    align-items: flex-start; 
 }
 
 .context h1 {
-    margin: 0; /* Remove margens padrão para não interferir no alinhamento */
+    margin: 0; 
     font-size: 2.5em;
-    text-align: left; /* Alinhamento específico para o h1*/
+    text-align: left; 
     color: var(--color-white);
 }
 
 .context p {
-    margin: 0; /* Remove margens padrão */
-    font-size: 18px;
-    font-weight: 400;
+    margin: 0; 
+    font-size: 1.5em; 
+    font-weight: 700;
     line-height: 1.56;
     letter-spacing: -0.54px;
-    text-align: left; /* Alinhamento específico para o parágrafo*/
+    text-align: left; 
     color: var(--color-white);
 }
 
 /* === Container principal do conteúdo (Abaixo do cabeçalho) === */
 .container {
-  max-width: 1000px; /* Limita a largura máxima do conteúdo */
-  margin: 0 0; /* Centraliza o container na página */
-  padding: 40px 15%; /* Padding lateral consistente para todo o conteúdo */
+  max-width: 1200px; /* Mais largo */
+  margin: 0 auto; /* Centralizado */
+  padding: 40px 10%; /* Mais largura para o conteúdo */
 }
 
 /* Estilos para títulos e parágrafos dentro das seções */
 section h3 {
-  color: #009e4f; /* Cor específica */
+  color: var(--color-green-title); 
   margin-bottom: 10px;
-  text-align: left; /* Alinhamento esquerdo consistente*/
+  text-align: left; 
   font-family: "Open Sans", sans-serif;
 }
 
 section p {
   margin-bottom: 30px;
-  text-align: left; /* Alinhamento esquerdo consistente*/
+  text-align: left; 
   font-family: "Open Sans", sans-serif;
 }
 
-.team-section {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  flex-direction: row;
+/* Estilo para o parágrafo final do projeto */
+p.final-project-text {
+    margin-top: 20px;
 }
 
+/* --- ESTILOS PARA OS PILARES (SOBRE O PROJETO) --- */
+.project-pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid var(--color-gray-border);
+    border-radius: 8px;
+    height: 100%; /* Garante que todos os pilares tenham a mesma altura */
+}
+
+.pillar img {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0; /* Impede que a imagem encolha */
+    margin-top: 3px; /* Alinhamento visual com o texto */
+}
+
+.pillar p {
+    margin: 0; /* Remove margem inferior padrão */
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+/* --- ESTILOS PARA A EQUIPE (GRID) --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.team-member {
+    padding: 15px 10px;
+    border: 1px solid var(--color-gray-border);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.team-member p {
+    margin: 0;
+    line-height: 1.2;
+    font-size: 0.85em;
+}
+
+.team-member .member-name {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.95em;
+}
+
+/* Remove a seção de imagem do time (team-section não é mais usado) */
+.team-section {
+    display: block; /* Mantém apenas para garantir que não quebre se o HTML for misturado */
+}
 .team-section .image {
-  min-height: 150px;
-  background: #ffffff;
-  border-radius: 10px;
+    display: none;
 }
 
 /* FOOTER - NENHUMA ALTERAÇÃO SOLICITADA */
@@ -182,15 +264,15 @@ footer svg, footer img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
     display: block;
     margin: 0;
     padding: 0;
     z-index: 1;
 }
 
-.footer-content { /* Assuming this class is used for footer text */
+.footer-content { 
     position: absolute;
     top: 0;
     left: 0;
@@ -199,14 +281,14 @@ footer svg, footer img {
     z-index: 2;
     display: flex;
     align-items: center;
-    padding: 0 10%; /* Consistent padding */
+    padding: 0 10%; 
 }
 
 .footer-content p {
     color: white;
     margin: 0;
     font-size: 0.9em;
-    text-align: left; /* Alinhamento esquerdo para o parágrafo do footer*/
+    text-align: left; 
 }
 
 
@@ -223,33 +305,34 @@ footer svg, footer img {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Em mobile, pode ficar atrás de tudo ou ser ajustado se necessário */
+    z-index: -1; 
   }
 
   .navbar {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%; /* Padding reduzido para mobile */
+    padding: 20px 5%; 
+    padding-left: 20px; /* Ajusta o padding para mobile */
     position: relative;
   }
 
   .logo {
-      flex-direction: column; /* Empilha logo e texto verticalmente */
-      align-items: flex-start; /* Alinha à esquerda no empilhamento*/
+      flex-direction: column; 
+      align-items: flex-start; 
       gap: 5px;
   }
 
   .logo img {
-    width: 120px; /* Logo menor em mobile */
+    width: 120px; 
   }
 
   .logo-text {
-      font-size: 0.9em; /* Texto da logo menor em mobile */
+      font-size: 0.9em; 
   }
 
   .menu-toggle {
-      display: block; /* Mostra o botão de menu em mobile */
+      display: block; 
       position: absolute;
       top: 20px;
       right: 5%;
@@ -262,10 +345,10 @@ footer svg, footer img {
   }
 
   .links {
-    display: none; /* Escondido por padrão em mobile, JS mostrará */
+    display: none; 
     flex-direction: column;
     position: absolute;
-    top: 100%; /* Abaixo do navbar */
+    top: 100%; 
     left: 0;
     width: 100%;
     background-color: var(--funcap-primary-green-800);
@@ -275,7 +358,7 @@ footer svg, footer img {
   }
 
   .links.show {
-    display: flex; /* Exibe quando a classe 'show' é adicionada (via JS) */
+    display: flex; 
   }
 
   .links ul {
@@ -293,13 +376,12 @@ footer svg, footer img {
   }
 
   .content {
-    padding: 40px 5%; /* Padding lateral reduzido para mobile */
+    padding: 40px 5%; 
   }
 
   .context {
-    padding: 50% 0 0; /* Padding superior para mobile, lateral 0 pois já está no .content */
-    /* text-align: left; REMOVIDO: será herdado do body ou definido em elementos específicos */
-    align-items: flex-start; /* Mantém alinhamento esquerdo*/
+    padding: 50% 0 0; 
+    align-items: flex-start; 
   }
 
   .context h1 {
@@ -308,18 +390,44 @@ footer svg, footer img {
   }
 
   .context p {
-    font-size: 16px;
+    font-size: 18px;
     text-align: left;
   }
 
   .container {
-    padding: 20px 5%; /* Padding lateral reduzido para mobile */
+    padding: 20px 5%; 
   }
 
   section h3, section p {
-      text-align: left; /* Mantém alinhamento esquerdo em mobile*/
+      text-align: left; 
   }
 
-  .team-section {
-  }
+    /* Responsividade para Pilares (Empilha em mobile) */
+    .project-pillars {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .pillar {
+        flex-direction: column; /* Ícone em cima, texto em baixo */
+        align-items: center;
+        text-align: center;
+    }
+
+    .pillar p {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* Responsividade para Equipe (Reduz o número de colunas) */
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas em tablets/mobile horizontal */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em mobile vertical */
+    }
 }
