@@ -179,6 +179,10 @@
 }
 
 /* === Informações e Manuais === */
+.informacoes{
+    display: flex;
+    align-items: center;
+}
 .informacoes h3 {
     font-size: 50px;
     font-weight: 800;
@@ -199,9 +203,9 @@
 }
 
 .informacoes img {
-    width: 50px;
+    width: 60px;
     /* Tamanho do ícone */
-    height: 50px;
+    height: 60px;
 }
 
 /* === Texto do processo === */
@@ -815,11 +819,69 @@ footer {
   background-color: #167232; /* Cor verde mais escura */
   border: 1px solid white;   /* Borda branca, como no menu 'Processos' */
 }
+/* === Layout Integridade (igual ao de Processos) === */
+.integridade-container {
+    display: flex;
+    gap: 20px;
+    padding: 40px 10%;
+}
 
+/* Menu lateral */
+.integridade-menu {
+    width: 280px;
+    background: #2EAB52;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.integridade-menu button {
+    background: #259447;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.integridade-menu button:hover {
+    background: #124D25;
+}
+
+/* Conteúdo da direita */
+.integridade-content {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
 
 /* ###################################################### */
 /* ### INÍCIO DA SEÇÃO DE RESPONSIVIDADE PARA CELULAR ### */
 /* ###################################################### */
+/* === Responsividade === */
+@media (max-width: 768px) {
+    .integridade-container {
+        flex-direction: column;
+        padding: 20px 5%;
+    }
+
+    .integridade-menu {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .integridade-menu button {
+        min-width: 140px;
+        white-space: nowrap;
+    }
+}
 
 @media (max-width: 768px) {
     /* Ajusta paddings principais para telas menores */
