@@ -258,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             if (targetSection) {
                 targetSection.style.display = 'block';
+                containerConteudoIntegridade.style.display = 'block';
             } else {
                 console.warn(`Conteúdo para "${sectionName}" não encontrado.`);
             }
