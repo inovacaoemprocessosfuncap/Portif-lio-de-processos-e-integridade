@@ -5,6 +5,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+html, body {
+    overflow-x: hidden; /* Corta qualquer coisa que tente criar scroll lateral */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 /* === Variáveis de Tema === */
 /* Definição de cores principais */
@@ -69,7 +75,8 @@
 }
 
 .logo img {
-    width: 150px;
+    max-width: 150px;
+    width: 100%;
     /* Largura da logo */
 }
 
@@ -203,7 +210,8 @@
 }
 
 .informacoes img {
-    width: 60px;
+    max-width: 60px;
+    width: 100%;
     /* Tamanho do ícone */
     height: 60px;
 }
@@ -321,7 +329,7 @@
     background-color: #2EAB52;
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 100%;
     min-width: 425px;
     gap: 16px;
     height: auto;
@@ -484,8 +492,8 @@
 .portifolio_parte_branca {
     border: 1px #3FB383 solid;
     max-width: 745px;
-    width: 645px;
-    height: 650px;
+    width: 100%;
+    height: 100%;
     max-height: 700px;
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
@@ -694,12 +702,12 @@
 
 .butoes-pag {
     display: flex;
-    gap: 2%;
+    gap: 1%;
     padding: 1%;
 }
 
 .butoes-pag button {
-    padding: 8px 12px;
+    padding: 10px 12px;
     border: none;
     background-color: #EEEEEE;
     color: #7F7F7F;
@@ -776,8 +784,8 @@ footer {
   
 /* --- ESTILOS PARA O NOVO MENU DE INTEGRIDADE ('Ética', 'Governança'...) --- */
 .integridade-tab {
-  width: 80%;
-  height: 50px;
+  width: 100%;
+  max-height: 50px;
   background-color: #259447; /* Cor verde do .diretoria */
   border: none;
   color: white;
@@ -830,8 +838,10 @@ footer {
       position: absolute;
       top: 0;
       left: 0;
-      width: 1204px;
-      height: 1200px;
+      width: 100%;
+      height: 100%;
+      max-width: 1204px;
+      max-height: 1200px;
       z-index: -1;
     }
   
