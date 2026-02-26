@@ -858,18 +858,6 @@ footer {
     }
   
     /* Mostra o botão de menu hamburguer */
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 5%;
-        background: none;
-        border: none;
-        color: var(--color-text);
-        font-size: 28px;
-        cursor: pointer;
-        z-index: 20;
-      }
   
     .logo img {
       width: 120px;
@@ -877,15 +865,14 @@ footer {
   
     /* Esconde o menu de links principal (JS vai mostrar) */
     .links {
-      display: none;
       flex-direction: column;
       position: absolute;
-      top: 100%;
       right: 0;
-      background-color: #2FB454;
-      width: 100%;
-      padding: 10px 0;
-      z-index: 15;
+      background-color: #fdd318;
+      width: 40%;
+      margin-top: 11%;
+      padding: 0 0;
+      border-radius: 15px;
     }
   
     .links.show {
