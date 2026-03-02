@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- 6. LÓGICA DAS ABAS (INTEGRIDADE: ÉTICA, GOVERNANÇA, etc.) ---
     // (Seu código original, que usa o texto do botão)
-    const integridadeTabButtons = document.querySelectorAll('.portifolio .dropdown .integridade-tab');
+    const integridadeTabButtons = document.querySelectorAll('.portifolio_integridade .dropdown .integridade-tab');
     const integridadeContentContainer = document.querySelector('.secao_Integridade');
     integridadeTabButtons.forEach(button => {
         button.addEventListener('click', function() {
